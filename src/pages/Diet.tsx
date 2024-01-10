@@ -1,14 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, TextInput, Image, KeyboardAvoidingView, ScrollView, Platform, TouchableOpacity } from 'react-native';
-import { get, ref, remove, set, update } from 'firebase/database';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
-import { FIREBASE_APP, FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
-import database from '@react-native-firebase/database';
-import logo from '../images/logo.png';
+import { StyleSheet, Text, View, KeyboardAvoidingView, ScrollView, TouchableOpacity } from 'react-native';
+import { get, ref } from 'firebase/database';
+import { onAuthStateChanged } from 'firebase/auth';
+import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
 import alert from '../components/alert';
 import { useDietManagement } from '../components/DietManagement';
 import CaloriesContext from '../components/CaloriesContext';
-
 
 interface Product {
     name: string;
@@ -85,7 +82,7 @@ const Diet = () => {
     const handlePressGenerateDietPlanButton = async () => {
         if (calories != 0) {
             // jezeli false to nie wyswietla dan, jezeli true to wyswietla. Czyli do wyswietlenia dan po klikneciu przycisku
-            setCaloriesPlanView(true); 
+            setCaloriesPlanView(true);
             pickMealsBasedOnCalories();
         }
         else {

@@ -1,6 +1,5 @@
-import React, { Component, useEffect, useState, useContext } from 'react';
-import { Platform, Keyboard, TextInput, View, StyleSheet } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import React, { useEffect, useState, useContext } from 'react';
+import { Platform, Keyboard } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../Types';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -17,11 +16,9 @@ import DietPage from '../../pages/Diet';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { Image } from 'react-native';
-import Icons from '../Icons';
-import alert from '../alert';
 import AuthorizationContext from '../AuthorizationContext';
 import Diet7DaysPage from '../../pages/Diet7Days';
-import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem, } from '@react-navigation/drawer';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const BottomTab = createBottomTabNavigator();
@@ -53,59 +50,31 @@ const NavigationFunctions = ({ navigation }: Props) => {
 const NotLoggedStackNavigation = () => {
     return (
         <SafeAreaProvider>
-            <>
-                {Platform.OS === 'web' ?
-                    (
-                        <>
-                            <Stack.Navigator initialRouteName="Home" >
-                                <Stack.Screen name="LoggedHomeDrawerNavigation" component={LoggedHomeDrawerNavigation} options={{
-                                    headerShown: false,
-                                }} />
+            <Stack.Navigator initialRouteName="Home" >
+                <Stack.Screen name="LoggedHomeDrawerNavigation" component={LoggedHomeDrawerNavigation} options={{
+                    headerShown: false,
+                }} />
 
-                                <Stack.Screen name="Home" component={HomePage} options={{
-                                    headerShown: false,
-                                }} />
+                <Stack.Screen name="Home" component={HomePage} options={{
+                    headerShown: false,
+                }} />
 
-                                <Stack.Screen name="Login" component={LoginPage} options={{
-                                    headerShown: false,
-                                }} />
+                <Stack.Screen name="Login" component={LoginPage} options={{
+                    headerStyle: {
+                        backgroundColor: 'lightgrey',
+                    },
+                    headerTitle: "LOGOWANIE",
+                    headerTitleAlign: 'center',
+                }} />
 
-                                <Stack.Screen name="Registration" component={RegistrationPage} options={{
-                                    headerShown: false,
-                                }} />
-
-                            </Stack.Navigator>
-                        </>
-                    ) : (
-                        <>
-                            <Stack.Navigator initialRouteName="Home" >
-                                <Stack.Screen name="LoggedHomeDrawerNavigation" component={LoggedHomeDrawerNavigation} options={{
-                                    headerShown: false,
-                                }} />
-
-                                <Stack.Screen name="Home" component={HomePage} options={{
-                                    headerShown: false,
-                                }} />
-
-                                <Stack.Screen name="Login" component={LoginPage} options={{
-                                     headerStyle: {
-                                        backgroundColor: 'lightgrey',
-                                    },
-                                    headerTitle: "LOGOWANIE",
-                                    // headerTitle: "",
-                                }} />
-
-                                <Stack.Screen name="Registration" component={RegistrationPage} options={{
-                                     headerStyle: {
-                                        backgroundColor: 'lightgrey',
-                                    },
-                                    headerTitle: "REJESTRACJA",
-                                    // headerTitle: "",
-                                }} />
-                            </Stack.Navigator>
-                        </>
-                    )}
-            </>
+                <Stack.Screen name="Registration" component={RegistrationPage} options={{
+                    headerStyle: {
+                        backgroundColor: 'lightgrey',
+                    },
+                    headerTitle: "REJESTRACJA",
+                    headerTitleAlign: 'center',
+                }} />
+            </Stack.Navigator>
         </SafeAreaProvider >
     );
 };
@@ -113,7 +82,6 @@ const NotLoggedStackNavigation = () => {
 const TabNavigation = () => {
 
     const [isUserLogged, setUserLogged] = useContext(AuthorizationContext);
-    const icons = Icons();
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
 
     //Listeners - do schowania menu nawigacji, gdy klawiatura jest wyswietlona i pokazaniu gdy klawiatury nie ma na ekranie
@@ -141,42 +109,25 @@ const TabNavigation = () => {
             <>
                 {Platform.OS === 'web' ? (
                     <>
-                        <TopTab.Navigator initialRouteName="LoggedHome">
-                            {/* <TopTab.Screen name="About" component={AboutPage}
-                                    options={{
-                                        tabBarLabelStyle: {
-                                            fontSize: 20,
-                                        },
-                                        tabBarLabel: 'Informacje',
-                                        tabBarIcon: () => <icons.InformationIcon />,
-                                    }} />
-
-                                <TopTab.Screen name="Account" component={AccountPage}
-                                    options={{
-                                        tabBarLabelStyle: {
-                                            fontSize: 20,
-                                        },
-                                        tabBarLabel: 'Konto',
-                                        tabBarIcon: () => <icons.AccountIcon />,
-                                    }} />
-
-                                <TopTab.Screen name="CaloriesCalculation" component={CaloriesCalculationPage}
-                                    options={{
-                                        tabBarLabelStyle: {
-                                            fontSize: 20,
-                                        },
-                                        tabBarLabel: 'Kalkulator kalorii',
-                                        tabBarIcon: () => <icons.CaloriesCalculatorIcon />,
-                                    }} /> 
-                            
-
+                        <TopTab.Navigator
+                            initialRouteName="LoggedHome"
+                            screenOptions={{
+                                tabBarStyle: {
+                                    backgroundColor: 'lightgrey', // Tutaj ustawiasz kolor tła
+                                },
+                            }}
+                        >
                             <TopTab.Screen name="Diet" component={DietPage}
                                 options={{
                                     tabBarLabelStyle: {
                                         fontSize: 20,
                                     },
                                     tabBarLabel: 'Plan diety',
-                                    tabBarIcon: () => <icons.DietIcon />,
+                                    tabBarIcon: () =>
+                                        <Image
+                                            source={require('../../images/diet.png')}
+                                            style={{ width: 30, height: 30 }}
+                                        />
                                 }} />
 
                             <TopTab.Screen name="LoggedHome" component={LoggedHomePage}
@@ -185,9 +136,12 @@ const TabNavigation = () => {
                                         fontSize: 20,
                                     },
                                     tabBarLabel: 'Strona główna',
-                                    tabBarIcon: () => <icons.HomeIcon />,
-                                }}
-                            />
+                                    tabBarIcon: () =>
+                                        <Image
+                                            source={require('../../images/home.png')}
+                                            style={{ width: 30, height: 30 }}
+                                        />
+                                }} />
 
                             <TopTab.Screen name="Diet7Days" component={Diet7DaysPage}
                                 options={{
@@ -195,38 +149,12 @@ const TabNavigation = () => {
                                         fontSize: 20,
                                     },
                                     tabBarLabel: 'Tygodniowy plan',
-                                    tabBarIcon: () => <icons.Icon7Days />,
+                                    tabBarIcon: () =>
+                                        <Image
+                                            source={require('../../images/diet7days.png')}
+                                            style={{ width: 30, height: 30 }}
+                                        />
                                 }} />
-                                */}
-
-                            <TopTab.Screen name="Diet" component={DietPage}
-                                options={{
-                                    tabBarLabelStyle: {
-                                        fontSize: 20,
-                                    },
-                                    tabBarLabel: 'Plan diety',
-                                    tabBarIcon: () => <icons.DietIcon />,
-                                }} />
-
-                            <TopTab.Screen name="LoggedHome" component={LoggedHomePage}
-                                options={{
-                                    tabBarLabelStyle: {
-                                        fontSize: 20,
-                                    },
-                                    tabBarLabel: 'Strona główna',
-                                    tabBarIcon: () => <icons.HomeIcon />,
-                                }}
-                            />
-
-                            <TopTab.Screen name="Diet7Days" component={Diet7DaysPage}
-                                options={{
-                                    tabBarLabelStyle: {
-                                        fontSize: 20,
-                                    },
-                                    tabBarLabel: 'Tygodniowy plan',
-                                    tabBarIcon: () => <icons.Icon7Days />,
-                                }} />
-
                         </TopTab.Navigator>
                     </>
                 ) : (

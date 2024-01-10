@@ -1,16 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity, Button } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, SafeAreaView, Image } from 'react-native';
 import logo from '../images/logo.png';
-import { RootStackParamList } from '../components/Types';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { NavigationFunctions } from '../components/Navigation/Navigation';
 import { useDietManagement } from '../components/DietManagement';
-import alert from '../components/alert';
-import database from '@react-native-firebase/database';
-import CaloriesContext from '../components/CaloriesContext';
-import { FIREBASE_APP, FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
-import { get, ref, remove, set, update, onValue, off } from 'firebase/database';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
+import { get, ref } from 'firebase/database';
+import { onAuthStateChanged } from 'firebase/auth';
 
 interface Product {
   name: string;

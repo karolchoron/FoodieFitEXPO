@@ -1,12 +1,9 @@
-import React, { useContext } from 'react';
-import { Platform, StyleSheet, Text, View, Image, TouchableOpacity, Alert } from 'react-native';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import alert from './alert';
 import { RootStackParamList } from '../components/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updatePassword, reauthenticateWithCredential, EmailAuthProvider, deleteUser, sendEmailVerification } from 'firebase/auth';
 import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
-import { ref, remove, set, update } from 'firebase/database'; // dodawanie, usuwanie itd z bazy Realtime Database Firebase
+import { ref, remove, set, update } from 'firebase/database';
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>;
 type Props = {

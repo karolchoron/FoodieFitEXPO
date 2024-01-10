@@ -1,14 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, TouchableOpacity, Platform, ScrollView, KeyboardAvoidingView, FlatList } from 'react-native';
-import alert from '../components/alert';
+import { StyleSheet, Text, View, TouchableOpacity, KeyboardAvoidingView, FlatList } from 'react-native';
 import { RootStackParamList } from '../components/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
 import AuthorizationContext from '../components/AuthorizationContext';
-import { UserSingOut, UserPasswordChange, DeleteAccount, UserNameChange, UserDietTypeChange } from '../components/AuthorizationManagement';
+import { UserDietTypeChange } from '../components/AuthorizationManagement';
 import { Picker } from '@react-native-picker/picker';
-import { FIREBASE_APP, FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
-import { get, ref, remove, set, update, onValue, off } from 'firebase/database';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
+import { get, ref, update } from 'firebase/database';
+import { onAuthStateChanged } from 'firebase/auth';
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>;
 type Props = {
@@ -146,20 +145,6 @@ const DietPreferences = ({ navigation }: Props) => {
         });
     };
 
-    // STARY KOD DZIALAJACY:
-    // // aktualizacja niechcianych skladnikow w bazie
-    // const updateUnwantedProducts = async (userId: string, products: string[]) => {
-    //     const userRef = ref(FIREBASE_DATABASE, `users/${userId}/uwnatedProducts`);
-
-    //     let updates: { [key: string]: any } = {};
-    //     products.forEach(product => {
-    //         updates[product] = { name: product };
-    //     });
-
-    //     await update(userRef, updates);
-    // };
-
-
     // aktualizacja niechcianych skladnikow w bazie
     const updateUnwantedProducts = async (userId: string, products: string[]) => {
         const userRef = ref(FIREBASE_DATABASE, `users/${userId}/uwnatedProducts`);
@@ -184,17 +169,6 @@ const DietPreferences = ({ navigation }: Props) => {
         await update(userRef, updates);
     };
 
-    // const updateUnwantedProducts = async (userId: string, products: string[]) => {
-    //     const userRef = ref(FIREBASE_DATABASE, `users/${userId}/uwnatedProducts`);
-    //     let updates: { [key: string]: any } = {};
-    //     products.forEach(product => {
-    //         updates[product] = { name: product };
-    //     });
-
-    //     await update(userRef, updates);
-    // };
-
-    // const renderIngredient = ({ item }) => {
     const renderIngredient = ({ item }: { item: Ingredient }) => {
         const isSelected = selectedIngredients.includes(item.name);
         const backgroundColor = isSelected ? "red" : "lightgrey";
@@ -210,34 +184,36 @@ const DietPreferences = ({ navigation }: Props) => {
 
     return (
         <KeyboardAvoidingView style={styles.container}>
-            {/* <ScrollView showsVerticalScrollIndicator={false}> */}
-            <View style={styles.dataView}>
-                <Text style={styles.contentText}>
-                    Wprowadź zmiany w preferencji swojej diety
-                </Text>
-            </View>
-            <View style={styles.separator}></View>
-            <View style={styles.dataView}>
-                <View>
-                    <Text style={styles.contentText}>{'\n'}TYP DIETY</Text>
-                    <Picker
-                        mode="dropdown"
-                        selectedValue={dietTypeSelectedValue}
-                        style={styles.stylePicker}
-                        onValueChange={(dietTypeValue, dietTypeIndex) => setDietTypeSelectedValue(dietTypeValue)}>
-                        <Picker.Item label="Klasyczna" value="Klasyczna" />
-                        <Picker.Item label="Wegetariańska" value="Wegetarianska" />
-                    </Picker>
+            <View>
+                <View style={styles.dataView}>
+                    <Text style={styles.contentText}>
+                        Wprowadź zmiany w preferencji swojej diety
+                    </Text>
                 </View>
-                <Text>{'\n'}</Text>
-                <TouchableOpacity style={styles.button} onPress={() => UserDietTypeChange(dietTypeSelectedValue)}>
-                    <Text style={styles.buttonText}>Zmień typ diety</Text>
-                </TouchableOpacity>
-                <Text>{'\n'}</Text>
+                <View style={styles.separator}></View>
+                <View style={styles.dataView}>
+                    <View>
+                        <Text style={styles.contentText}>{'\n'}TYP DIETY</Text>
+                        <Picker
+                            mode="dropdown"
+                            selectedValue={dietTypeSelectedValue}
+                            style={styles.stylePicker}
+                            onValueChange={(dietTypeValue, dietTypeIndex) => setDietTypeSelectedValue(dietTypeValue)}>
+                            <Picker.Item label="Klasyczna" value="Klasyczna" />
+                            <Picker.Item label="Wegetariańska" value="Wegetarianska" />
+                        </Picker>
+                    </View>
+                    <Text>{'\n'}</Text>
+                    <TouchableOpacity style={styles.button} onPress={() => UserDietTypeChange(dietTypeSelectedValue)}>
+                        <Text style={styles.buttonText}>Zmień typ diety</Text>
+                    </TouchableOpacity>
+                    <Text>{'\n'}</Text>
+                </View>
+                <View style={styles.separator}></View>
             </View>
-            <View style={styles.separator}></View>
             <Text style={styles.contentText}>
-                Wybierz składniki, które chcesz wykluczyć ze swoich posiłków: {"\n"}
+                Wybierz składniki, które chcesz {'\n'}
+                wykluczyć ze swoich posiłków: {"\n"}
             </Text>
             <FlatList
                 data={ingredients}
@@ -245,7 +221,6 @@ const DietPreferences = ({ navigation }: Props) => {
                 keyExtractor={(item) => item.id}
                 extraData={selectedIngredients}
             />
-            {/* </ScrollView> */}
         </KeyboardAvoidingView>
     );
 };
@@ -343,7 +318,8 @@ const styles = StyleSheet.create({
         borderTopWidth: 0,
         borderLeftWidth: 0,
         borderRightWidth: 0,
-        borderBottomWidth: 1,
+        // borderBottomWidth: 1,
+        borderBottomWidth: 0,
         borderBottomColor: 'grey',
         width: 250,
         height: 50,

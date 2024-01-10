@@ -1,9 +1,7 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState } from 'react';
 import { } from 'react-native';
-import { Platform, StyleSheet, Text, View, Image, TouchableOpacity, } from 'react-native';
-// import { NativeRouter, Route, Link, Routes } from 'react-router-native';
 import { NavigationContainer } from "@react-navigation/native";
-import { NavigationFunctions, NotLoggedStackNavigation, TabNavigation, LoggedHomeDrawerNavigation } from './src/components/Navigation/Navigation';
+import { NotLoggedStackNavigation } from './src/components/Navigation/Navigation';
 import './database/FirebaseConfig';
 import 'react-native-gesture-handler'; // potrzebny do Drawer - side menu
 import AuthorizationContext from './src/components/AuthorizationContext';
@@ -17,8 +15,7 @@ const App = () => {
     <AuthorizationContext.Provider value={[isUserLogged, setUserLogged]}>
       <CaloriesContext.Provider value={[calories, setCalories]}>
         <NavigationContainer>
-          {/* <NotLoggedStackNavigation /> */}
-          < NotLoggedStackNavigation/>
+          < NotLoggedStackNavigation />
         </NavigationContainer>
       </CaloriesContext.Provider>
     </AuthorizationContext.Provider>

@@ -1,9 +1,6 @@
-import React, { useContext, useEffect } from 'react';
-import { Platform, StyleSheet, Text, View, Image, TouchableOpacity, Alert } from 'react-native';
 import alert from './alert';
-import { FIREBASE_APP, FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
-import { get, ref, remove, set, update, onValue, off } from 'firebase/database';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
+import { get, ref, set } from 'firebase/database';
 
 const CountCalories = (textAge: string, textWeight: string, textGrowth: string, sexSelectedValue: string, activitySelectedValue: string, dietPurposeSelectedValue: string, setCalories: any) => {
     let countedCaloriesDemand = 0;

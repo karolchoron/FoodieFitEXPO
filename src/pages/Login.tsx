@@ -1,10 +1,8 @@
 import React, { useState, useContext } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, TouchableOpacity, Alert, Platform } from 'react-native';
-import logo from '../images/logo.png';
+import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, TouchableOpacity } from 'react-native';
 import { RootStackParamList } from '../components/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { NavigationFunctions } from '../components/Navigation/Navigation';
-import Icons from '../components/Icons';
 import AuthorizationContext from '../components/AuthorizationContext';
 import { UserLogin } from '../components/AuthorizationManagement';
 
@@ -17,8 +15,6 @@ const Login = ({ navigation }: Props) => {
 
   const [isUserLogged, setUserLogged] = useContext(AuthorizationContext);
   const navigationFunctions = NavigationFunctions({ navigation });
-
-  const icons = Icons();
 
   const [textEmail, setEmailText] = useState('');
   const [textPassword, setPasswordText] = useState('');
@@ -72,30 +68,10 @@ const Login = ({ navigation }: Props) => {
           placeholderTextColor={isPasswordFocused ? 'transparent' : 'grey'}
         />
       </View>
-
       <Text>{'\n'}</Text>
-
-      {Platform.OS === 'web' ? (
-        <>
-          <View style={styles.buttonsContainer}>
-            <TouchableOpacity style={styles.button} onPress={navigationFunctions.goToHome}>
-              <icons.BackIcon />
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.button} onPress={() => UserLogin({ navigation }, textEmail, textPassword, setUserLogged)}>
-              <Text style={styles.buttonText}>Zaloguj się</Text>
-            </TouchableOpacity>
-
-
-            <Text>{'\n'}</Text>
-          </View>
-        </>
-      ) : (
-        <>
-          <TouchableOpacity style={styles.button} onPress={() => UserLogin({ navigation }, textEmail, textPassword, setUserLogged)}>
-            <Text style={styles.buttonText}>Zaloguj się</Text>
-          </TouchableOpacity>
-        </>
-      )}
+      <TouchableOpacity style={styles.button} onPress={() => UserLogin({ navigation }, textEmail, textPassword, setUserLogged)}>
+        <Text style={styles.buttonText}>Zaloguj się</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -155,7 +131,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
   },
-  
+
   separator: {
     margin: 10,
     height: 2,

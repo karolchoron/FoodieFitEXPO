@@ -1,12 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, TextInput, Image, KeyboardAvoidingView, ScrollView, Platform, TouchableOpacity } from 'react-native';
-import { ref, get, equalTo, query, orderByChild, endAt, orderByValue, startAt, update, onChildRemoved, onValue } from 'firebase/database';
-import database from '@react-native-firebase/database';
-import logo from '../images/logo.png';
+import { useState, useContext } from 'react';
+import { ref, get, update } from 'firebase/database';
 import alert from '../components/alert';
-import { FIREBASE_APP, FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
+import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
 import CaloriesContext from './CaloriesContext';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface Product {
     name: string;
@@ -23,10 +19,8 @@ interface Dish {
     products?: Record<string, Product>;
 }
 
-
 export const useDietManagement = () => {
     const [calories] = useContext(CaloriesContext);
-
     const [theDayDish, setTheDayDish] = useState<Record<string, Dish>>({});
     const [breakfast, setBreakfast] = useState<Record<string, Dish>>({});
     const [dinner, setDinner] = useState<Record<string, Dish>>({});

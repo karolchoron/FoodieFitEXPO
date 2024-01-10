@@ -3,8 +3,6 @@ import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity, TextInpu
 import { RootStackParamList } from '../components/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { NavigationFunctions } from '../components/Navigation/Navigation';
-import Svg, { Path } from 'react-native-svg';
-import Icons from '../components/Icons';
 import AuthorizationContext from '../components/AuthorizationContext';
 import { RegisterUser } from '../components/AuthorizationManagement';
 import { Picker } from '@react-native-picker/picker';
@@ -17,8 +15,6 @@ type Props = {
 const Registration = ({ navigation }: Props) => {
   const [isUserLogged, setUserLogged] = useContext(AuthorizationContext);
   const navigationFunctions = NavigationFunctions({ navigation });
-
-  const icons = Icons();
 
   const [textEmail, setEmailText] = useState('');
   const [textPassword, setPasswordText] = useState('');
@@ -53,7 +49,7 @@ i dopiero potem "ZAREJESTRUJ" */}
   return (
     <KeyboardAvoidingView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        
+
         {/* <Text style={styles.headerText}>
           REJESTRACJA{'\n'}{'\n'}
         </Text> */}
@@ -128,32 +124,9 @@ i dopiero potem "ZAREJESTRUJ" */}
             placeholderTextColor={isUserLastNameFocused ? 'transparent' : 'grey'}
           />
         </View>
-
-        {/* <Text>{'\n'}</Text> */}
-
-        {Platform.OS === 'web' ? (
-          <>
-            <View style={styles.buttonsContainer}>
-              <TouchableOpacity style={styles.button} onPress={navigationFunctions.goToHome}>
-                {/* <Text style={styles.buttonText}>Powrót</Text> */}
-                <icons.BackIcon />
-              </TouchableOpacity>
-
-              <TouchableOpacity style={styles.button} onPress={() => RegisterUser({ navigation }, textEmail, textPassword, textUserName, textUserLastName, dietTypeSelectedValue, setUserLogged)}>
-                <Text style={styles.buttonText}>Zarejestruj się</Text>
-              </TouchableOpacity>
-
-              <Text>{'\n'}</Text>
-            </View>
-          </>
-        ) : (
-          <>
-            <TouchableOpacity style={styles.button} onPress={() => RegisterUser({ navigation }, textEmail, textPassword, textUserName, textUserLastName, dietTypeSelectedValue, setUserLogged)}>
-              <Text style={styles.buttonText}>Zarejestruj się</Text>
-            </TouchableOpacity>
-          </>
-        )}
-
+        <TouchableOpacity style={styles.button} onPress={() => RegisterUser({ navigation }, textEmail, textPassword, textUserName, textUserLastName, dietTypeSelectedValue, setUserLogged)}>
+          <Text style={styles.buttonText}>Zarejestruj się</Text>
+        </TouchableOpacity>
       </ScrollView >
     </KeyboardAvoidingView>
   );
@@ -228,7 +201,8 @@ const styles = StyleSheet.create({
     borderTopWidth: 0,
     borderLeftWidth: 0,
     borderRightWidth: 0,
-    borderBottomWidth: 1,
+    borderBottomWidth: 0,
+    // borderBottomWidth: 1,
     borderBottomColor: 'grey',
     width: 250,
     height: 50,
@@ -245,7 +219,7 @@ const styles = StyleSheet.create({
     height: 2,
     width: "95%",
     backgroundColor: 'grey',
-},
+  },
 
 });
 

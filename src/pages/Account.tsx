@@ -1,20 +1,18 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, TouchableOpacity, Platform, ScrollView, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView } from 'react-native';
 import alert from '../components/alert';
 import { RootStackParamList } from '../components/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
 import AuthorizationContext from '../components/AuthorizationContext';
-import { UserSingOut, UserPasswordChange, DeleteAccount, UserNameChange, UserDietTypeChange } from '../components/AuthorizationManagement';
-import { Picker } from '@react-native-picker/picker';
-import { FIREBASE_APP, FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
-import { get, ref, remove, set, update, onValue, off } from 'firebase/database';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { UserSingOut, UserPasswordChange, DeleteAccount, UserNameChange } from '../components/AuthorizationManagement';
+import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
+import { get, ref } from 'firebase/database';
+import { onAuthStateChanged } from 'firebase/auth';
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>;
 type Props = {
     navigation: ProfileScreenNavigationProp;
 };
-
 
 const Account = ({ navigation }: Props) => {
 
@@ -296,7 +294,8 @@ const styles = StyleSheet.create({
         borderTopWidth: 0,
         borderLeftWidth: 0,
         borderRightWidth: 0,
-        borderBottomWidth: 1,
+        // borderBottomWidth: 1,
+        borderBottomWidth: 0,
         borderBottomColor: 'grey',
         width: 250,
         height: 50,

@@ -1,12 +1,11 @@
-import React, { Component, useEffect, useState, useContext } from 'react';
-import { StyleSheet, Text, View, SafeAreaView, TextInput, KeyboardAvoidingView, ScrollView, Platform, TouchableOpacity } from 'react-native';
+import React, { useEffect, useState, useContext } from 'react';
+import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView, ScrollView, TouchableOpacity } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-import alert from '../components/alert';
 import CaloriesContext from '../components/CaloriesContext';
 import { CountCalories } from '../components/CaloriesManagement';
-import { FIREBASE_APP, FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
-import { get, ref, remove, set, update, onValue, off } from 'firebase/database';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
+import { get, ref } from 'firebase/database';
+import { onAuthStateChanged } from 'firebase/auth';
 
 const CaloriesCalculation = () => {
 
@@ -59,12 +58,6 @@ const CaloriesCalculation = () => {
     <>
       <KeyboardAvoidingView style={styles.container}>
         <ScrollView showsVerticalScrollIndicator={false}>
-          {/* <View>
-            <Text style={styles.headerText}>
-              KALKULATOR KALORII
-            </Text>
-          </View> */}
-
           <View>
             <Text style={styles.contentText}>
               {'\n'}Wprowadź swoje dane{'\n'}
@@ -230,8 +223,8 @@ const styles = StyleSheet.create({
   button: {
     alignItems: 'center',
     backgroundColor: 'lightgreen',
-        padding: 12,
-        borderRadius: 30,
+    padding: 12,
+    borderRadius: 30,
     width: 'auto',
   },
 
@@ -246,7 +239,8 @@ const styles = StyleSheet.create({
     borderTopWidth: 0,
     borderLeftWidth: 0,
     borderRightWidth: 0,
-    borderBottomWidth: 1,
+    // borderBottomWidth: 1,
+    borderBottomWidth: 0,
     borderBottomColor: 'grey',
     width: 250,
     height: 50,
