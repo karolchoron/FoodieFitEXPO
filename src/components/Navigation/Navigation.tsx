@@ -125,7 +125,7 @@ const TabNavigation = () => {
                                     tabBarLabel: 'Plan diety',
                                     tabBarIcon: () =>
                                         <Image
-                                            source={require('../../images/diet.png')}
+                                            source={require('../../../assets/images/diet.png')}
                                             style={{ width: 30, height: 30 }}
                                         />
                                 }} />
@@ -138,7 +138,7 @@ const TabNavigation = () => {
                                     tabBarLabel: 'Strona główna',
                                     tabBarIcon: () =>
                                         <Image
-                                            source={require('../../images/home.png')}
+                                            source={require('../../../assets/images/home.png')}
                                             style={{ width: 30, height: 30 }}
                                         />
                                 }} />
@@ -151,7 +151,7 @@ const TabNavigation = () => {
                                     tabBarLabel: 'Tygodniowy plan',
                                     tabBarIcon: () =>
                                         <Image
-                                            source={require('../../images/diet7days.png')}
+                                            source={require('../../../assets/images/diet7days.png')}
                                             style={{ width: 30, height: 30 }}
                                         />
                                 }} />
@@ -173,7 +173,7 @@ const TabNavigation = () => {
                                 tabBarLabel: 'Plan diety',
                                 tabBarIcon: () =>
                                     <Image
-                                        source={require('../../images/diet.png')}
+                                        source={require('../../../assets/images/diet.png')}
                                         style={{ width: 30, height: 30 }}
                                     />
                             }} />
@@ -187,7 +187,7 @@ const TabNavigation = () => {
                                 tabBarLabel: 'Strona główna',
                                 tabBarIcon: () =>
                                     <Image
-                                        source={require('../../images/home.png')}
+                                        source={require('../../../assets/images/home.png')}
                                         style={{ width: 30, height: 30 }}
                                     />
                             }} />
@@ -201,7 +201,7 @@ const TabNavigation = () => {
                                 tabBarLabel: 'Tygodniowy plan',
                                 tabBarIcon: () =>
                                     <Image
-                                        source={require('../../images/diet7days.png')}
+                                        source={require('../../../assets/images/diet7days.png')}
                                         style={{ width: 30, height: 30 }}
                                     />
                             }} />
@@ -225,7 +225,7 @@ const LoggedHomeDrawerNavigation = () => {
                     drawerLabel: 'Główny panely',
                     drawerIcon: () =>
                         <Image
-                            source={require('../../images/backbutton.png')}
+                            source={require('../../../assets/images/backbutton.png')}
                             style={{ width: 30, height: 30 }}
                         />
                 }} />
@@ -238,7 +238,7 @@ const LoggedHomeDrawerNavigation = () => {
                     drawerLabel: 'Kalkulator kalorii',
                     drawerIcon: () =>
                         <Image
-                            source={require('../../images/caloriescalculation.png')}
+                            source={require('../../../assets/images/caloriescalculation.png')}
                             style={{ width: 30, height: 30 }}
                         />
                 }} />
@@ -251,7 +251,7 @@ const LoggedHomeDrawerNavigation = () => {
                     drawerLabel: 'Preferencje diety',
                     drawerIcon: () =>
                         <Image
-                            source={require('../../images/preference.png')}
+                            source={require('../../../assets/images/preference.png')}
                             style={{ width: 30, height: 30 }}
                         />
                 }} />
@@ -264,7 +264,7 @@ const LoggedHomeDrawerNavigation = () => {
                     drawerLabel: 'Konto',
                     drawerIcon: () =>
                         <Image
-                            source={require('../../images/account.png')}
+                            source={require('../../../assets/images/account.png')}
                             style={{ width: 30, height: 30 }}
                         />
                 }} />
@@ -277,7 +277,7 @@ const LoggedHomeDrawerNavigation = () => {
                     drawerLabel: 'Informacje',
                     drawerIcon: () =>
                         <Image
-                            source={require('../../images/about.png')}
+                            source={require('../../../assets/images/about.png')}
                             style={{ width: 30, height: 30 }}
                         />,
                 }} />
@@ -288,7 +288,7 @@ const LoggedHomeDrawerNavigation = () => {
                     drawerLabel: 'Wyloguj się',
                     drawerIcon: () =>
                         <Image
-                            source={require('../../images/logout.png')}
+                            source={require('../../../assets/images/logout.png')}
                             style={{ width: 30, height: 30 }}
                         />,
                 }} /> */}

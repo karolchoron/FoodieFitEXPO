@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity } from 'react-native';
-import logo from '../images/logo.png';
+import logo from '../../assets/images/logo.png';
 import { RootStackParamList } from '../components/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { NavigationFunctions } from '../components/Navigation/Navigation';

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Image } from 'react-native';
-import logo from '../images/logo.png';
+import logo from '../../assets/images/logo.png';
 import { useDietManagement } from '../components/DietManagement';
 import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
 import { get, ref } from 'firebase/database';
