@@ -1,20 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState, useContext, useEffect } from 'react';
+import { } from 'react-native';
+import { Platform, StyleSheet, Text, View, Image, TouchableOpacity, } from 'react-native';
+// import { NativeRouter, Route, Link, Routes } from 'react-router-native';
+import { NavigationContainer } from "@react-navigation/native";
+import { NavigationFunctions, NotLoggedStackNavigation, TabNavigation, LoggedHomeDrawerNavigation } from './src/components/Navigation/Navigation';
+import './database/FirebaseConfig';
+import 'react-native-gesture-handler'; // potrzebny do Drawer - side menu
+import AuthorizationContext from './src/components/AuthorizationContext';
+import CaloriesContext from './src/components/CaloriesContext';
 
-export default function App() {
+const App = () => {
+  const [isUserLogged, setUserLogged] = useState(false);
+  const [calories, setCalories] = useState("0");
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <AuthorizationContext.Provider value={[isUserLogged, setUserLogged]}>
+      <CaloriesContext.Provider value={[calories, setCalories]}>
+        <NavigationContainer>
+          {/* <NotLoggedStackNavigation /> */}
+          < NotLoggedStackNavigation/>
+        </NavigationContainer>
+      </CaloriesContext.Provider>
+    </AuthorizationContext.Provider>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
