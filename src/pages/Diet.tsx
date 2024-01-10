@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
 
     button: {
         alignItems: 'center',
-        backgroundColor: 'lightgreen',
+        backgroundColor: 'lightgrey',
         padding: 12,
         borderRadius: 30,
         width: 'auto',
