@@ -7,14 +7,14 @@ export type RootStackParamList = {
   CaloriesCalculation: undefined;
   About: undefined;
   Home: undefined;
-  LoggedHome: undefined;
+  MealOfTheDay: undefined;
   Login: undefined;
   Registration: undefined;
   HomeStack: undefined;
   StackNavigator: undefined;
-  LoggedHomeNavigator: undefined;
+  MealOfTheDayNavigator: undefined;
   LoggedScreenTabNavigator: undefined;
-  LoggedHomeDrawerNavigation: undefined;
+  MealOfTheDayDrawerNavigation: undefined;
   Diet7DaysDrawerNavigation: undefined;
   DietDrawerNavigation: undefined;
   AccountStackNavigator: undefined;

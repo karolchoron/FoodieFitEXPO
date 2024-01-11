@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
-import { NotLoggedStackNavigation } from './source/navigation/Navigation';
+import { NotLoggedStackNavigation } from './source/navigation/NavigationStackControll';
 import './source/data/FirebaseConfig';
 import 'react-native-gesture-handler'; // potrzebny do Drawer - side menu
 import AuthorizationContext from './source/sharedUtils/AuthorizationContext';

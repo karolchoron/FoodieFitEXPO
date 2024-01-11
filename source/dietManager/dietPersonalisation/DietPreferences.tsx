@@ -1,29 +1,14 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, KeyboardAvoidingView, FlatList } from 'react-native';
-import { RootStackParamList } from '../../sharedUtils/Types';
-import { StackNavigationProp } from '@react-navigation/stack';
-import AuthorizationContext from '../../sharedUtils/AuthorizationContext';
-import { UserDietTypeChange } from '../../accountManager/AuthorizationManagement';
+import React, { useState, useEffect } from 'react';
+import { Text, View, TouchableOpacity, KeyboardAvoidingView, FlatList } from 'react-native';
+import { UserDietTypeChange } from './DietPreferencesController';
 import { Picker } from '@react-native-picker/picker';
 import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../data/FirebaseConfig';
 import { get, ref, update } from 'firebase/database';
 import { onAuthStateChanged } from 'firebase/auth';
 import '../../interfaces/IngredientInterface';
+import styles from './DietPreferencesStyles';
 
-type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>;
-type Props = {
-    navigation: ProfileScreenNavigationProp;
-};
-
-// interface Ingredient {
-//     id: string;
-//     name: string;
-//     calories: number;
-// }
-
-const DietPreferences = ({ navigation }: Props) => {
-
-    const [isUserLogged, setUserLogged] = useContext(AuthorizationContext);
+const DietPreferences = () => {
     const [dietTypeSelectedValue, setDietTypeSelectedValue] = useState("Klasyczna");
     const [ingredients, setIngredients] = useState<any[]>([]);
     const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
@@ -50,12 +35,12 @@ const DietPreferences = ({ navigation }: Props) => {
             }
         });
 
-        // pobieranie składników z bazy
+        // pobieranie składnikow z bazy
         const ingredientsRef = ref(FIREBASE_DATABASE, 'ingredients');
         get(ingredientsRef).then((snapshot) => {
             if (snapshot.exists()) {
                 const fetchedIngredients = snapshot.val();
-                // Konwersja obiektu na tablicę obiektów
+                // Konwersja obiektu na tablice obiektow
                 const ingredientsArray = Object.keys(fetchedIngredients).map(key => {
                     return {
                         id: key,
@@ -64,8 +49,6 @@ const DietPreferences = ({ navigation }: Props) => {
                 });
 
                 const ingredientNames = ingredientsArray.map(ingredient => ingredient.name);
-                // console.log("Pobrane składniki:", ingredientNames); // Wypisywanie pobranych danych w konsoli
-                // console.log("Pobrane składniki (tablica obiektów):", ingredientsArray);
                 setIngredients(ingredientsArray);
             } else {
                 console.log("Błąd, brak składników");
@@ -115,37 +98,6 @@ const DietPreferences = ({ navigation }: Props) => {
         fetchIngredients();
     }, []);
 
-
-    // Obsługa wyboru składników STARY KOD
-    // const handleSelectIngredient = (name: string) => {
-    //     setSelectedIngredients(prevSelected => {
-    //         if (prevSelected.includes(name)) {
-    //             return prevSelected.filter(item => item !== name);
-    //         } else {
-    //             return [...prevSelected, name];
-    //         }
-    //     });
-    // };
-
-    // Obsługa wyboru składników
-    const handleSelectIngredient = async (name: string) => {
-        const user = FIREBASE_AUTH.currentUser;
-        if (!user) {
-            console.log("Użytkownik nie jest zalogowany");
-            return;
-        }
-
-        await setSelectedIngredients(prevSelected => {
-            const newSelected = prevSelected.includes(name) ?
-                prevSelected.filter(item => item !== name) :
-                [...prevSelected, name];
-
-            // Aktualizuj listę niechcianych produktów w Firebase
-            updateUnwantedProducts(user.uid, newSelected);
-            return newSelected;
-        });
-    };
-
     // aktualizacja niechcianych skladnikow w bazie
     const updateUnwantedProducts = async (userId: string, products: string[]) => {
         const userRef = ref(FIREBASE_DATABASE, `users/${userId}/uwnatedProducts`);
@@ -168,6 +120,25 @@ const DietPreferences = ({ navigation }: Props) => {
         });
 
         await update(userRef, updates);
+    };
+
+    // Obsługa wyboru składników
+    const handleSelectIngredient = async (name: string) => {
+        const user = FIREBASE_AUTH.currentUser;
+        if (!user) {
+            console.log("Użytkownik nie jest zalogowany");
+            return;
+        }
+
+        await setSelectedIngredients(prevSelected => {
+            const newSelected = prevSelected.includes(name) ?
+                prevSelected.filter(item => item !== name) :
+                [...prevSelected, name];
+
+            // Aktualizuj liste niechcianych produktow w Firebase
+            updateUnwantedProducts(user.uid, newSelected);
+            return newSelected;
+        });
     };
 
     const renderIngredient = ({ item }: { item: Ingredient }) => {
@@ -225,122 +196,5 @@ const DietPreferences = ({ navigation }: Props) => {
         </KeyboardAvoidingView>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        flex: 1,
-        padding: 10,
-        backgroundColor: '#f0f0eb',
-    },
-    headerText: {
-        fontWeight: 'bold',
-        fontSize: 25,
-        color: '#000',
-        marginBottom: 20,
-        textAlign: 'center',
-    },
-
-    headerContentText: {
-        fontWeight: 'bold',
-        fontSize: 22,
-        color: '#000',
-        textAlign: 'center',
-    },
-
-    contentText: {
-        fontWeight: 'normal',
-        fontSize: 20,
-        color: '#000',
-        textAlign: 'center',
-    },
-
-    button: {
-        alignItems: 'center',
-        backgroundColor: 'lightgrey',
-        padding: 12,
-        borderRadius: 30,
-        width: 'auto',
-    },
-
-    buttonText: {
-        color: 'black',
-        fontSize: 18,
-        fontWeight: 'bold',
-        textAlign: "center",
-    },
-
-    buttonDelete: {
-        alignItems: 'center',
-        backgroundColor: 'red',
-        padding: 12,
-        borderRadius: 30,
-        width: 'auto',
-    },
-
-
-    buttonDeleteText: {
-        color: 'white',
-        fontSize: 18,
-        fontWeight: 'bold',
-    },
-
-    textInput: {
-        borderBottomColor: 'grey',
-        borderBottomWidth: 1,
-        fontWeight: 'normal',
-        fontSize: 20,
-        color: 'black',
-        textAlign: 'center',
-        marginBottom: 10,
-    },
-
-    dataView: {
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-
-    logOutAndDeleteView: {
-        padding: 10,
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-    },
-
-    separator: {
-        margin: 10,
-        height: 2,
-        width: "95%",
-        backgroundColor: 'grey',
-    },
-
-    stylePicker: {
-        borderTopWidth: 0,
-        borderLeftWidth: 0,
-        borderRightWidth: 0,
-        // borderBottomWidth: 1,
-        borderBottomWidth: 0,
-        borderBottomColor: 'grey',
-        width: 250,
-        height: 50,
-        alignSelf: 'center',
-        justifyContent: 'center',
-        textAlign: 'center',
-        alignContent: 'center',
-        fontWeight: 'normal',
-        fontSize: 20,
-        backgroundColor: '#f0f0eb',
-    },
-    ingredientItem: {
-        padding: 10,
-        marginVertical: 8,
-        marginHorizontal: 16,
-        borderRadius: 5,
-    },
-    title: {
-        fontSize: 16,
-    },
-});
 
 export default DietPreferences;

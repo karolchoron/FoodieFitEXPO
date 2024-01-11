@@ -1,8 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity } from 'react-native';
+import { Text, View, SafeAreaView, Image, TouchableOpacity } from 'react-native';
 import { RootStackParamList } from '../sharedUtils/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { NavigationFunctions } from '../navigation/Navigation';
+import { NavigationFunctions } from '../navigation/NavigationControll';
+import styles from './HomeStyles';
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>;
 type Props = {
@@ -16,7 +17,6 @@ const Home = ({ navigation }: Props) => {
     <SafeAreaView style={styles.container}>
 
       <Image source={require('../../assets/images/logo.png')} style={styles.image} />
-
 
       <Text style={styles.headerText}>
         FoodieFit
@@ -43,52 +43,5 @@ const Home = ({ navigation }: Props) => {
     </SafeAreaView>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    flex: 1,
-    backgroundColor: '#f0f0eb',
-  },
-  image: {
-    width: 200,
-    height: 200,
-  },
-  headerText: {
-    fontWeight: 'bold',
-    fontSize: 25,
-    color: '#000',
-    textAlign: 'center',
-  },
-
-  contentText: {
-    fontWeight: 'normal',
-    fontSize: 20,
-    color: '#000',
-    textAlign: 'center',
-  },
-
-  button: {
-    alignItems: 'center',
-    backgroundColor: 'lightgrey',
-    margin: 10,
-    padding: 12,
-    borderRadius: 30,
-    width: 'auto',
-  },
-
-  buttonText: {
-    color: 'black',
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-
-  buttonsContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  },
-});
 
 export default Home;

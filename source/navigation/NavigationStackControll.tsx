@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Platform, Keyboard } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../sharedUtils/Types';
-import { StackNavigationProp } from '@react-navigation/stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -12,7 +11,7 @@ import RegistrationPage from '../accountManager/register/Registration';
 import LoginPage from '../accountManager/login/Login';
 import AboutPage from '../about/About';
 import HomePage from '../base/Home';
-import LoggedHomePage from '../mealPlanManager/mealOfTheDay/LoggedHome';
+import MealOfTheDayPage from '../mealPlanManager/mealOfTheDay/MealOfTheDay';
 import CaloriesCalculationPage from '../dietManager/caloriesCalculation/CaloriesCalculation';
 import AccountPage from '../accountManager/manageDataAccount/Account';
 import DietPreferencesPage from '../dietManager/dietPersonalisation/DietPreferences';
@@ -25,32 +24,11 @@ const BottomTab = createBottomTabNavigator();
 const TopTab = createMaterialTopTabNavigator();
 const Drawer = createDrawerNavigator();
 
-type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>;
-type Props = {
-    navigation: ProfileScreenNavigationProp;
-};
-
-const NavigationFunctions = ({ navigation }: Props) => {
-    const goToLogin = () => {
-        navigation.navigate('Login');
-    };
-
-    const goToRegistration = () => {
-        navigation.navigate('Registration');
-    };
-
-    const goToHome = () => {
-        navigation.navigate('Home');
-    };
-
-    return { goToLogin, goToRegistration, goToHome };
-};
-
 const NotLoggedStackNavigation = () => {
     return (
         <SafeAreaProvider>
             <Stack.Navigator initialRouteName="Home" >
-                <Stack.Screen name="LoggedHomeDrawerNavigation" component={LoggedHomeDrawerNavigation} options={{
+                <Stack.Screen name="MealOfTheDayDrawerNavigation" component={MealOfTheDayDrawerNavigation} options={{
                     headerShown: false,
                 }} />
 
@@ -109,7 +87,7 @@ const TabNavigation = () => {
                 {Platform.OS === 'web' ? (
                     <>
                         <TopTab.Navigator
-                            initialRouteName="LoggedHome"
+                            initialRouteName="MealOfTheDay"
                             screenOptions={{
                                 tabBarStyle: {
                                     backgroundColor: 'lightgrey',
@@ -122,6 +100,7 @@ const TabNavigation = () => {
                                         fontSize: 20,
                                     },
                                     tabBarLabel: 'Plan diety',
+
                                     tabBarIcon: () =>
                                         <Image
                                             source={require('../../assets/images/diet.png')}
@@ -129,7 +108,7 @@ const TabNavigation = () => {
                                         />
                                 }} />
 
-                            <TopTab.Screen name="LoggedHome" component={LoggedHomePage}
+                            <TopTab.Screen name="MealOfTheDay" component={MealOfTheDayPage}
                                 options={{
                                     tabBarLabelStyle: {
                                         fontSize: 20,
@@ -158,9 +137,9 @@ const TabNavigation = () => {
                     </>
                 ) : (
                     <>
-                        <BottomTab.Navigator initialRouteName="LoggedHome"
+                        <BottomTab.Navigator initialRouteName="MealOfTheDay"
                             screenOptions={{
-                                tabBarStyle: isKeyboardVisible ? { display: 'none' } : {backgroundColor: 'lightgrey'},
+                                tabBarStyle: isKeyboardVisible ? { display: 'none' } : { backgroundColor: 'lightgrey' },
                             }} >
 
                             <BottomTab.Screen name="Diet" component={DietPage} options={{
@@ -177,7 +156,7 @@ const TabNavigation = () => {
                                     />
                             }} />
 
-                            < BottomTab.Screen name="LoggedHome" component={LoggedHomePage} options={{
+                            < BottomTab.Screen name="MealOfTheDay" component={MealOfTheDayPage} options={{
                                 headerStyle: {
                                     backgroundColor: 'lightgrey',
                                 },
@@ -212,7 +191,7 @@ const TabNavigation = () => {
     );
 };
 
-const LoggedHomeDrawerNavigation = () => {
+const MealOfTheDayDrawerNavigation = () => {
     return (
         <SafeAreaProvider>
             <Drawer.Navigator initialRouteName="TabNavigation">
@@ -222,6 +201,7 @@ const LoggedHomeDrawerNavigation = () => {
                     },
                     headerTitle: "",
                     drawerLabel: 'Główny panely',
+                    headerTitleAlign: 'center',
                     drawerIcon: () =>
                         <Image
                             source={require('../../assets/images/backbutton.png')}
@@ -233,6 +213,7 @@ const LoggedHomeDrawerNavigation = () => {
                     headerStyle: {
                         backgroundColor: 'lightgrey',
                     },
+                    headerTitleAlign: 'center',
                     headerTitle: "KALKULATOR KALORII",
                     drawerLabel: 'Kalkulator kalorii',
                     drawerIcon: () =>
@@ -246,6 +227,7 @@ const LoggedHomeDrawerNavigation = () => {
                     headerStyle: {
                         backgroundColor: 'lightgrey',
                     },
+                    headerTitleAlign: 'center',
                     headerTitle: "PREFERENCJE DIETY",
                     drawerLabel: 'Preferencje diety',
                     drawerIcon: () =>
@@ -259,6 +241,7 @@ const LoggedHomeDrawerNavigation = () => {
                     headerStyle: {
                         backgroundColor: 'lightgrey',
                     },
+                    headerTitleAlign: 'center',
                     headerTitle: "KONTO",
                     drawerLabel: 'Konto',
                     drawerIcon: () =>
@@ -272,6 +255,7 @@ const LoggedHomeDrawerNavigation = () => {
                     headerStyle: {
                         backgroundColor: 'lightgrey',
                     },
+                    headerTitleAlign: 'center',
                     headerTitle: "INFORMACJE",
                     drawerLabel: 'Informacje',
                     drawerIcon: () =>
@@ -297,4 +281,4 @@ const LoggedHomeDrawerNavigation = () => {
     );
 };
 
-export { NavigationFunctions, NotLoggedStackNavigation, TabNavigation, LoggedHomeDrawerNavigation };
+export { NotLoggedStackNavigation, TabNavigation, MealOfTheDayDrawerNavigation };
