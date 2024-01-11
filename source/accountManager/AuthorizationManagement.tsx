@@ -1,8 +1,8 @@
-import alert from './alert';
-import { RootStackParamList } from '../components/Types';
+import alert from '../sharedUtils/alert';
+import { RootStackParamList } from '../sharedUtils/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updatePassword, reauthenticateWithCredential, EmailAuthProvider, deleteUser, sendEmailVerification } from 'firebase/auth';
-import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
+import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../data/FirebaseConfig';
 import { ref, remove, set, update } from 'firebase/database';
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>;

@@ -1,9 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity } from 'react-native';
-import logo from '../../assets/images/logo.png';
-import { RootStackParamList } from '../components/Types';
+import { RootStackParamList } from '../sharedUtils/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { NavigationFunctions } from '../components/Navigation/Navigation';
+import { NavigationFunctions } from '../navigation/Navigation';
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>;
 type Props = {
@@ -16,7 +15,8 @@ const Home = ({ navigation }: Props) => {
   return (
     <SafeAreaView style={styles.container}>
 
-      <Image source={logo} style={styles.image} />
+      <Image source={require('../../assets/images/logo.png')} style={styles.image} />
+
 
       <Text style={styles.headerText}>
         FoodieFit
@@ -90,6 +90,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
-
 
 export default Home;

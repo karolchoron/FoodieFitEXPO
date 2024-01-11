@@ -2,23 +2,25 @@ import React, { useState, useEffect, useContext } from 'react';
 import { StyleSheet, Text, View, KeyboardAvoidingView, ScrollView, TouchableOpacity } from 'react-native';
 import { get, ref } from 'firebase/database';
 import { onAuthStateChanged } from 'firebase/auth';
-import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
-import alert from '../components/alert';
-import { useDietManagement } from '../components/DietManagement';
-import CaloriesContext from '../components/CaloriesContext';
+import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../data/FirebaseConfig';
+import alert from '../../sharedUtils/alert';
+import { useDietManagement } from '../DietManagement';
+import CaloriesContext from '../../sharedUtils/CaloriesContext';
+import '../../interfaces/ProductInterface';
+import '../../interfaces/DishInterface';
 
-interface Product {
-    name: string;
-    quantity: number;
-    weight: number;
-    calories: number;
-}
+// interface Product {
+//     name: string;
+//     quantity: number;
+//     weight: number;
+//     calories: number;
+// }
 
-interface Dish {
-    name: string;
-    totalCalories: number;
-    products?: Record<string, Product>;
-}
+// interface Dish {
+//     name: string;
+//     totalCalories: number;
+//     products?: Record<string, Product>;
+// }
 
 const Diet = () => {
     const [totalCalories, setTotalCalories] = useState(0);

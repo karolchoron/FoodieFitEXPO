@@ -2,31 +2,35 @@ import React, { useState, useEffect, useContext } from 'react';
 import { StyleSheet, Text, View, KeyboardAvoidingView, ScrollView, TouchableOpacity } from 'react-native';
 import { get, ref} from 'firebase/database';
 import { onAuthStateChanged } from 'firebase/auth';
-import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
-import alert from '../components/alert';
-import { useDietManagement } from '../components/DietManagement';
-import CaloriesContext from '../components/CaloriesContext';
+import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../data/FirebaseConfig';
+import alert from '../../sharedUtils/alert';
+import { useDietManagement } from '../DietManagement';
+import CaloriesContext from '../../sharedUtils/CaloriesContext';
+import '../../interfaces/ProductInterface';
+import '../../interfaces/DishInterface';
+import '../../interfaces/DayPlanInterface';
 
-interface Product {
-    name: string;
-    quantity: number;
-    weight: number;
-    calories: number;
-}
 
-interface Dish {
-    id: number;
-    name: string;
-    dietType: string;
-    totalCalories: number;
-    products?: Record<string, Product>;
-}
+// interface Product {
+//     name: string;
+//     quantity: number;
+//     weight: number;
+//     calories: number;
+// }
 
-interface DayPlan {
-    breakfast: Dish | null;
-    dinner: Dish | null;
-    supper: Dish | null;
-}
+// interface Dish {
+//     id: number;
+//     name: string;
+//     dietType: string;
+//     totalCalories: number;
+//     products?: Record<string, Product>;
+// }
+
+// interface DayPlan {
+//     breakfast: Dish | null;
+//     dinner: Dish | null;
+//     supper: Dish | null;
+// }
 
 const Diet7Days = () => {
 

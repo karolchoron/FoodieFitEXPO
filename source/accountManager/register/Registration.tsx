@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Image, TouchableOpacity, TextInput, Keyboard, KeyboardAvoidingView, ScrollView, Platform } from 'react-native';
-import { RootStackParamList } from '../components/Types';
+import { RootStackParamList } from '../../sharedUtils/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { NavigationFunctions } from '../components/Navigation/Navigation';
-import AuthorizationContext from '../components/AuthorizationContext';
-import { RegisterUser } from '../components/AuthorizationManagement';
+import { NavigationFunctions } from '../../navigation/Navigation';
+import AuthorizationContext from '../../sharedUtils/AuthorizationContext';
+import { RegisterUser } from '../AuthorizationManagement';
 import { Picker } from '@react-native-picker/picker';
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>;
@@ -39,20 +39,9 @@ const Registration = ({ navigation }: Props) => {
   const userLastNameHandleBlur = () => setUserLastNameIsFocused(false);
   const [dietTypeSelectedValue, setDietTypeSelectedValue] = useState("Klasyczna");
 
-
-  {/* TODO:  może zmien ten kod tak, aby najpierw bylo podawanie emaila i hasla potem klikasz przycisk DALEJ,
-pojawia sie nowy ekran
-w ktorym wpisujesz imie i nazwisko
-oraz typ diety
-i dopiero potem "ZAREJESTRUJ" */}
-
   return (
     <KeyboardAvoidingView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
-
-        {/* <Text style={styles.headerText}>
-          REJESTRACJA{'\n'}{'\n'}
-        </Text> */}
 
         <View>
           <Text style={styles.contentText}>{'\n'}Wybierz preferowany typ diety:</Text>

@@ -1,24 +1,24 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Platform, Keyboard } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../Types';
+import { RootStackParamList } from '../sharedUtils/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import RegistrationPage from '../../pages/Registration';
-import LoginPage from '../../pages/Login';
-import AboutPage from '../../pages/About';
-import HomePage from '../../pages/Home';
-import LoggedHomePage from '../../pages/LoggedHome';
-import CaloriesCalculationPage from '../../pages/CaloriesCalculation';
-import AccountPage from '../../pages/Account';
-import DietPreferencesPage from '../../pages/DietPreferences';
-import DietPage from '../../pages/Diet';
+import { Image } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { Image } from 'react-native';
-import AuthorizationContext from '../AuthorizationContext';
-import Diet7DaysPage from '../../pages/Diet7Days';
 import { createDrawerNavigator } from '@react-navigation/drawer';
+import RegistrationPage from '../accountManager/register/Registration';
+import LoginPage from '../accountManager/login/Login';
+import AboutPage from '../about/About';
+import HomePage from '../base/Home';
+import LoggedHomePage from '../mealPlanManager/mealOfTheDay/LoggedHome';
+import CaloriesCalculationPage from '../dietManager/caloriesCalculation/CaloriesCalculation';
+import AccountPage from '../accountManager/manageDataAccount/Account';
+import DietPreferencesPage from '../dietManager/dietPersonalisation/DietPreferences';
+import DietPage from '../mealPlanManager/oneDayMeal/Diet';
+import AuthorizationContext from '../sharedUtils/AuthorizationContext';
+import Diet7DaysPage from '../mealPlanManager/sevenDaysMeal/Diet7Days';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const BottomTab = createBottomTabNavigator();
@@ -29,8 +29,6 @@ type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>;
 type Props = {
     navigation: ProfileScreenNavigationProp;
 };
-
-// TODO ROZBIJ TO NA KILKA PLIKOW MOZE BEDZIE CYZTELNIEJ
 
 const NavigationFunctions = ({ navigation }: Props) => {
     const goToLogin = () => {
@@ -47,6 +45,7 @@ const NavigationFunctions = ({ navigation }: Props) => {
 
     return { goToLogin, goToRegistration, goToHome };
 };
+
 const NotLoggedStackNavigation = () => {
     return (
         <SafeAreaProvider>
@@ -113,7 +112,7 @@ const TabNavigation = () => {
                             initialRouteName="LoggedHome"
                             screenOptions={{
                                 tabBarStyle: {
-                                    backgroundColor: 'lightgrey', // Tutaj ustawiasz kolor tła
+                                    backgroundColor: 'lightgrey',
                                 },
                             }}
                         >
@@ -125,7 +124,7 @@ const TabNavigation = () => {
                                     tabBarLabel: 'Plan diety',
                                     tabBarIcon: () =>
                                         <Image
-                                            source={require('../../../assets/images/diet.png')}
+                                            source={require('../../assets/images/diet.png')}
                                             style={{ width: 30, height: 30 }}
                                         />
                                 }} />
@@ -138,7 +137,7 @@ const TabNavigation = () => {
                                     tabBarLabel: 'Strona główna',
                                     tabBarIcon: () =>
                                         <Image
-                                            source={require('../../../assets/images/home.png')}
+                                            source={require('../../assets/images/home.png')}
                                             style={{ width: 30, height: 30 }}
                                         />
                                 }} />
@@ -151,7 +150,7 @@ const TabNavigation = () => {
                                     tabBarLabel: 'Tygodniowy plan',
                                     tabBarIcon: () =>
                                         <Image
-                                            source={require('../../../assets/images/diet7days.png')}
+                                            source={require('../../assets/images/diet7days.png')}
                                             style={{ width: 30, height: 30 }}
                                         />
                                 }} />
@@ -161,7 +160,7 @@ const TabNavigation = () => {
                     <>
                         <BottomTab.Navigator initialRouteName="LoggedHome"
                             screenOptions={{
-                                tabBarStyle: isKeyboardVisible ? { display: 'none' } : {},
+                                tabBarStyle: isKeyboardVisible ? { display: 'none' } : {backgroundColor: 'lightgrey'},
                             }} >
 
                             <BottomTab.Screen name="Diet" component={DietPage} options={{
@@ -173,7 +172,7 @@ const TabNavigation = () => {
                                 tabBarLabel: 'Plan diety',
                                 tabBarIcon: () =>
                                     <Image
-                                        source={require('../../../assets/images/diet.png')}
+                                        source={require('../../assets/images/diet.png')}
                                         style={{ width: 30, height: 30 }}
                                     />
                             }} />
@@ -187,7 +186,7 @@ const TabNavigation = () => {
                                 tabBarLabel: 'Strona główna',
                                 tabBarIcon: () =>
                                     <Image
-                                        source={require('../../../assets/images/home.png')}
+                                        source={require('../../assets/images/home.png')}
                                         style={{ width: 30, height: 30 }}
                                     />
                             }} />
@@ -201,7 +200,7 @@ const TabNavigation = () => {
                                 tabBarLabel: 'Tygodniowy plan',
                                 tabBarIcon: () =>
                                     <Image
-                                        source={require('../../../assets/images/diet7days.png')}
+                                        source={require('../../assets/images/diet7days.png')}
                                         style={{ width: 30, height: 30 }}
                                     />
                             }} />
@@ -225,7 +224,7 @@ const LoggedHomeDrawerNavigation = () => {
                     drawerLabel: 'Główny panely',
                     drawerIcon: () =>
                         <Image
-                            source={require('../../../assets/images/backbutton.png')}
+                            source={require('../../assets/images/backbutton.png')}
                             style={{ width: 30, height: 30 }}
                         />
                 }} />
@@ -238,7 +237,7 @@ const LoggedHomeDrawerNavigation = () => {
                     drawerLabel: 'Kalkulator kalorii',
                     drawerIcon: () =>
                         <Image
-                            source={require('../../../assets/images/caloriescalculation.png')}
+                            source={require('../../assets/images/caloriescalculation.png')}
                             style={{ width: 30, height: 30 }}
                         />
                 }} />
@@ -251,7 +250,7 @@ const LoggedHomeDrawerNavigation = () => {
                     drawerLabel: 'Preferencje diety',
                     drawerIcon: () =>
                         <Image
-                            source={require('../../../assets/images/preference.png')}
+                            source={require('../../assets/images/preference.png')}
                             style={{ width: 30, height: 30 }}
                         />
                 }} />
@@ -264,7 +263,7 @@ const LoggedHomeDrawerNavigation = () => {
                     drawerLabel: 'Konto',
                     drawerIcon: () =>
                         <Image
-                            source={require('../../../assets/images/account.png')}
+                            source={require('../../assets/images/account.png')}
                             style={{ width: 30, height: 30 }}
                         />
                 }} />
@@ -277,7 +276,7 @@ const LoggedHomeDrawerNavigation = () => {
                     drawerLabel: 'Informacje',
                     drawerIcon: () =>
                         <Image
-                            source={require('../../../assets/images/about.png')}
+                            source={require('../../assets/images/about.png')}
                             style={{ width: 30, height: 30 }}
                         />,
                 }} />
@@ -288,7 +287,7 @@ const LoggedHomeDrawerNavigation = () => {
                     drawerLabel: 'Wyloguj się',
                     drawerIcon: () =>
                         <Image
-                            source={require('../../../assets/images/logout.png')}
+                            source={require('../../assets/images/logout.png')}
                             style={{ width: 30, height: 30 }}
                         />,
                 }} /> */}

@@ -1,23 +1,25 @@
 import { useState, useContext } from 'react';
 import { ref, get, update } from 'firebase/database';
-import alert from '../components/alert';
-import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
-import CaloriesContext from './CaloriesContext';
+import alert from '../sharedUtils/alert';
+import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../data/FirebaseConfig';
+import CaloriesContext from '../sharedUtils/CaloriesContext';
+import '../interfaces/ProductInterface';
+import '../interfaces/DishInterface';
 
-interface Product {
-    name: string;
-    quantity: number;
-    weight: number;
-    calories: number;
-}
+// interface Product {
+//     name: string;
+//     quantity: number;
+//     weight: number;
+//     calories: number;
+// }
 
-interface Dish {
-    id: number;
-    name: string;
-    dietType: string;
-    totalCalories: number;
-    products?: Record<string, Product>;
-}
+// interface Dish {
+//     id: number;
+//     name: string;
+//     dietType: string;
+//     totalCalories: number;
+//     products?: Record<string, Product>;
+// }
 
 export const useDietManagement = () => {
     const [calories] = useContext(CaloriesContext);

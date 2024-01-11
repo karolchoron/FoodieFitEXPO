@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
-import { NotLoggedStackNavigation } from './src/components/Navigation/Navigation';
-import './database/FirebaseConfig';
+import { NotLoggedStackNavigation } from './source/navigation/Navigation';
+import './source/data/FirebaseConfig';
 import 'react-native-gesture-handler'; // potrzebny do Drawer - side menu
-import AuthorizationContext from './src/components/AuthorizationContext';
-import CaloriesContext from './src/components/CaloriesContext';
+import AuthorizationContext from './source/sharedUtils/AuthorizationContext';
+import CaloriesContext from './source/sharedUtils/CaloriesContext';
 
 const App = () => {
   const [isUserLogged, setUserLogged] = useState(false);

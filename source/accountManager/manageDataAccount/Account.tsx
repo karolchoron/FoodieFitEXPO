@@ -1,11 +1,11 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView, KeyboardAvoidingView } from 'react-native';
-import alert from '../components/alert';
-import { RootStackParamList } from '../components/Types';
+import alert from '../../sharedUtils/alert';
+import { RootStackParamList } from '../../sharedUtils/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
-import AuthorizationContext from '../components/AuthorizationContext';
-import { UserSingOut, UserPasswordChange, DeleteAccount, UserNameChange } from '../components/AuthorizationManagement';
-import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
+import AuthorizationContext from '../../sharedUtils/AuthorizationContext';
+import { UserSingOut, UserPasswordChange, DeleteAccount, UserNameChange } from '../AuthorizationManagement';
+import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../data/FirebaseConfig';
 import { get, ref } from 'firebase/database';
 import { onAuthStateChanged } from 'firebase/auth';
 

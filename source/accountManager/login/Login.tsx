@@ -1,10 +1,10 @@
 import React, { useState, useContext } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, Image, TextInput, TouchableOpacity } from 'react-native';
-import { RootStackParamList } from '../components/Types';
+import { RootStackParamList } from '../../sharedUtils/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { NavigationFunctions } from '../components/Navigation/Navigation';
-import AuthorizationContext from '../components/AuthorizationContext';
-import { UserLogin } from '../components/AuthorizationManagement';
+import { NavigationFunctions } from '../../navigation/Navigation';
+import AuthorizationContext from '../../sharedUtils/AuthorizationContext';
+import { UserLogin } from '../AuthorizationManagement';
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>;
 type Props = {
@@ -30,10 +30,6 @@ const Login = ({ navigation }: Props) => {
 
   return (
     <SafeAreaView style={styles.container}>
-
-      {/* TODO 
-      MOZE DODAJ OPCJE "ZAPOMNIAŁEM HASŁA
-      */}
 
       <Text style={styles.contentText}>
         Wprowadź swoje dane{'\n'}

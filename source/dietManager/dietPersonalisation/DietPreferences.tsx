@@ -1,24 +1,25 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { StyleSheet, Text, View, TouchableOpacity, KeyboardAvoidingView, FlatList } from 'react-native';
-import { RootStackParamList } from '../components/Types';
+import { RootStackParamList } from '../../sharedUtils/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
-import AuthorizationContext from '../components/AuthorizationContext';
-import { UserDietTypeChange } from '../components/AuthorizationManagement';
+import AuthorizationContext from '../../sharedUtils/AuthorizationContext';
+import { UserDietTypeChange } from '../../accountManager/AuthorizationManagement';
 import { Picker } from '@react-native-picker/picker';
-import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
+import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../data/FirebaseConfig';
 import { get, ref, update } from 'firebase/database';
 import { onAuthStateChanged } from 'firebase/auth';
+import '../../interfaces/IngredientInterface';
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>;
 type Props = {
     navigation: ProfileScreenNavigationProp;
 };
 
-interface Ingredient {
-    id: string;
-    name: string;
-    calories: number;
-}
+// interface Ingredient {
+//     id: string;
+//     name: string;
+//     calories: number;
+// }
 
 const DietPreferences = ({ navigation }: Props) => {
 

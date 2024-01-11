@@ -1,5 +1,5 @@
-import alert from './alert';
-import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../database/FirebaseConfig';
+import alert from '../../sharedUtils/alert';
+import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../data/FirebaseConfig';
 import { get, ref, set } from 'firebase/database';
 
 const CountCalories = (textAge: string, textWeight: string, textGrowth: string, sexSelectedValue: string, activitySelectedValue: string, dietPurposeSelectedValue: string, setCalories: any) => {
