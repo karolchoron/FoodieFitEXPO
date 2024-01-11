@@ -4,13 +4,13 @@ const alertPolyfill = (title, description, options = []) => {
     const result = window.confirm([title, description].filter(Boolean).join('\n'));
 
     if (result) {
-        // Znajdź i wykonaj funkcję onPress dla pierwszej opcji, która nie jest typu 'cancel'
+        // Znajdz i wykonaj funkcje onPress dla pierwszej opcji, ktora nie jest typu 'cancel'
         const confirmOption = options.find(({ style }) => style !== 'cancel');
         if (confirmOption && confirmOption.onPress) {
             confirmOption.onPress();
         }
     } else {
-        // Znajdź i wykonaj funkcję onPress dla opcji 'cancel'
+        // Znajdz i wykonaj funkcje onPress dla opcji 'cancel'
         const cancelOption = options.find(({ style }) => style === 'cancel');
         if (cancelOption && cancelOption.onPress) {
             cancelOption.onPress();
@@ -18,7 +18,8 @@ const alertPolyfill = (title, description, options = []) => {
     }
 };
 
-// Użyj alertPolyfill na platformie webowej, a domyślny Alert na innych platformach
+// komponent react native alert domyslnie nie dziala na Web.
+// Uzyj alertPolyfill na platformie webowej, a domyslny Alert na platformach mobilnych
 const alert = Platform.OS === 'web' ? alertPolyfill : Alert.alert;
 
 export default alert;

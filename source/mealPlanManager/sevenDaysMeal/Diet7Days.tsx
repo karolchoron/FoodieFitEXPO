@@ -1,42 +1,19 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { StyleSheet, Text, View, KeyboardAvoidingView, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, KeyboardAvoidingView, ScrollView, TouchableOpacity } from 'react-native';
 import { get, ref} from 'firebase/database';
 import { onAuthStateChanged } from 'firebase/auth';
 import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../data/FirebaseConfig';
 import alert from '../../sharedUtils/alert';
-import { useDietManagement } from '../DietManagement';
+import { Diet7DaysController} from './Diet7DaysController';
 import CaloriesContext from '../../sharedUtils/CaloriesContext';
+import styles from './Diet7DaysStyles';
 import '../../interfaces/ProductInterface';
 import '../../interfaces/DishInterface';
 import '../../interfaces/DayPlanInterface';
 
-
-// interface Product {
-//     name: string;
-//     quantity: number;
-//     weight: number;
-//     calories: number;
-// }
-
-// interface Dish {
-//     id: number;
-//     name: string;
-//     dietType: string;
-//     totalCalories: number;
-//     products?: Record<string, Product>;
-// }
-
-// interface DayPlan {
-//     breakfast: Dish | null;
-//     dinner: Dish | null;
-//     supper: Dish | null;
-// }
-
 const Diet7Days = () => {
-
-    const { pickMealsFor7Days } = useDietManagement();
+    const { pickMealsFor7Days } = Diet7DaysController();
     const [weeklyDietPlan, setWeeklyDietPlan] = useState<DayPlan[]>([]);
-
     const [calories, setCalories] = useContext(CaloriesContext);
     const [caloriesPlanView, setCaloriesPlanView] = useState(false);
 
@@ -132,156 +109,5 @@ const Diet7Days = () => {
         </KeyboardAvoidingView>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        flex: 1,
-        backgroundColor: '#f0f0eb',
-        padding: 30,
-    },
-
-    headerText: {
-        fontWeight: 'bold',
-        fontSize: 25,
-        color: '#000',
-        marginBottom: 20,
-        textAlign: 'center',
-    },
-    descriptionTextHeader: {
-        fontWeight: 'normal',
-        fontSize: 20,
-        color: '#000',
-        textAlign: 'center',
-    },
-
-    descriptionDaysHeaderText: {
-        fontWeight: '700',
-        fontSize: 20,
-        color: '#000',
-        textAlign: 'center',
-    },
-
-    button: {
-        alignItems: 'center',
-        backgroundColor: 'lightgrey',
-        padding: 12,
-        borderRadius: 30,
-        width: 'auto',
-    },
-
-    buttonText: {
-        color: 'black',
-        fontSize: 18,
-        fontWeight: 'bold',
-        textAlign: 'center',
-    },
-
-    mealContainer: {
-        padding: 10,
-        margin: 10,
-        justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center',
-        borderWidth: 1,
-        borderColor: 'grey',
-        width: '90%',
-    },
-    mealTitle: {
-        fontSize: 17,
-        fontWeight: 'bold',
-        color: 'black',
-    },
-
-    mealName: {
-        fontSize: 17,
-        textAlign: 'center',
-        // fontWeight: 'bold',
-        color: 'black',
-    },
-
-    mealDescription: {
-        fontSize: 20,
-        textAlign: 'center',
-        color: 'black',
-    },
-
-    mealDataFontDescription: {
-        fontSize: 20,
-        textAlign: 'center',
-        color: 'black',
-        fontWeight: 'bold',
-    },
-
-    productDescription: {
-        fontSize: 18,
-        textAlign: 'center',
-        color: 'black',
-    },
-
-    productTitle: {
-        fontSize: 20,
-        textAlign: 'center',
-        fontWeight: 'bold',
-        color: 'black',
-    },
-
-    mealsList: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        textAlign: 'center',
-    },
-
-    horizontalLine: {
-        width: '99%',
-        height: 2,
-        backgroundColor: 'black',
-        marginVertical: 10,
-    },
-
-    buttonView: {
-        padding: 10,
-        flexDirection: 'row',
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-    },
-
-    dayPlan: {
-        marginBottom: 20,
-    },
-    dayTitle: {
-        fontSize: 20,
-        textAlign: 'center',
-        fontWeight: 'bold',
-        color: 'black',
-    },
-    mealTypeText: {
-        fontSize: 16,
-        marginTop: 5,
-        color: 'black',
-        fontWeight: 'bold',
-    },
-
-    caloriesQuantityOfTheDayText: {
-        textAlign: 'center',
-        fontSize: 16,
-        marginTop: 5,
-        color: 'black',
-    },
-
-    mealText: {
-        fontSize: 16,
-        marginTop: 5,
-        color: 'black',
-    },
-
-    separator: {
-        margin: 10,
-        height: 2,
-        width: "95%",
-        backgroundColor: 'grey',
-    },
-});
 
 export default Diet7Days;

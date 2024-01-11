@@ -15,7 +15,7 @@ import MealOfTheDayPage from '../mealPlanManager/mealOfTheDay/MealOfTheDay';
 import CaloriesCalculationPage from '../dietManager/caloriesCalculation/CaloriesCalculation';
 import AccountPage from '../accountManager/manageDataAccount/Account';
 import DietPreferencesPage from '../dietManager/dietPersonalisation/DietPreferences';
-import DietPage from '../mealPlanManager/oneDayMeal/Diet';
+import OneDayMealPage from '../mealPlanManager/oneDayMeal/OneDayMeal';
 import AuthorizationContext from '../sharedUtils/AuthorizationContext';
 import Diet7DaysPage from '../mealPlanManager/sevenDaysMeal/Diet7Days';
 
@@ -94,7 +94,7 @@ const TabNavigation = () => {
                                 },
                             }}
                         >
-                            <TopTab.Screen name="Diet" component={DietPage}
+                            <TopTab.Screen name="OneDayMeal" component={OneDayMealPage}
                                 options={{
                                     tabBarLabelStyle: {
                                         fontSize: 20,
@@ -142,7 +142,7 @@ const TabNavigation = () => {
                                 tabBarStyle: isKeyboardVisible ? { display: 'none' } : { backgroundColor: 'lightgrey' },
                             }} >
 
-                            <BottomTab.Screen name="Diet" component={DietPage} options={{
+                            <BottomTab.Screen name="OneDayMeal" component={OneDayMealPage} options={{
                                 headerStyle: {
                                     backgroundColor: 'lightgrey',
                                 },
