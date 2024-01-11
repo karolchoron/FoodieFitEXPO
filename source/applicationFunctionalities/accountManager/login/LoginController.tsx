@@ -1,8 +1,8 @@
-import alert from '../../sharedUtils/alert';
-import { RootStackParamList } from '../../sharedUtils/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { FIREBASE_AUTH } from '../../data/FirebaseConfig';
+import { RootStackParamList } from '../../../sharedUtils/Types';
+import { FIREBASE_AUTH } from '../../../data/FirebaseConfig';
+import alert from '../../../sharedUtils/Alert';
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>;
 type Props = {

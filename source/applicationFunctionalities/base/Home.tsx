@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text, View, SafeAreaView, Image, TouchableOpacity } from 'react-native';
-import { RootStackParamList } from '../sharedUtils/Types';
+import { RootStackParamList } from '../../sharedUtils/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { NavigationFunctions } from '../navigation/NavigationControll';
+import { NavigationFunctions } from '../../navigation/NavigationControll';
 import styles from './HomeStyles';
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>;

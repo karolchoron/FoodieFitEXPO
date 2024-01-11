@@ -3,10 +3,10 @@ import { Text, View, TouchableOpacity, KeyboardAvoidingView, FlatList } from 're
 import { Picker } from '@react-native-picker/picker';
 import '../../interfaces/IngredientInterface';
 import styles from './DietPreferencesStyles';
-import { DietPreferencesManagement } from './DietPreferencesManagement'; 
+import { DietPreferencesController } from './DietPreferencesController'; 
 
 const DietPreferences = () => {
-    const { dietTypeSelectedValue, setDietTypeSelectedValue, ingredients, selectedIngredients, renderIngredient , UserDietTypeChange} = DietPreferencesManagement();
+    const { dietTypeSelectedValue, setDietTypeSelectedValue, ingredients, selectedIngredients, renderIngredient , UserDietTypeChange} = DietPreferencesController();
 
     return (
         <KeyboardAvoidingView style={styles.container}>

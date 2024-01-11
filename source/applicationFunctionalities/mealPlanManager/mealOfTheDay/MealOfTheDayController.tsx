@@ -1,5 +1,5 @@
 import { ref, get, update } from 'firebase/database';
-import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../data/FirebaseConfig';
+import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../../data/FirebaseConfig';
 import '../../interfaces/ProductInterface';
 import '../../interfaces/DishInterface';
 

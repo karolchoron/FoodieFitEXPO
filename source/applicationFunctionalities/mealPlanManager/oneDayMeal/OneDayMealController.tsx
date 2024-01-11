@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { ref, get } from 'firebase/database';
 import { Text, View } from 'react-native';
-import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../data/FirebaseConfig';
+import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../../data/FirebaseConfig';
 import styles from './OneDayMealStyles';
-import alert from '../../sharedUtils/alert';
+import alert from '../../../sharedUtils/Alert';
 import '../../interfaces/ProductInterface';
 import '../../interfaces/DishInterface';
 import '../../interfaces/ProductInterface';

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../data/FirebaseConfig';
+import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../../data/FirebaseConfig';
 import { get, ref, update } from 'firebase/database';
 import { onAuthStateChanged } from 'firebase/auth';
-import alert from '../../sharedUtils/alert';
+import alert from '../../../sharedUtils/Alert';
 import styles from './DietPreferencesStyles';
 import '../../interfaces/IngredientInterface';
 
-export const DietPreferencesManagement = () => {
+export const DietPreferencesController = () => {
     const [dietTypeSelectedValue, setDietTypeSelectedValue] = useState("Klasyczna");
     const [ingredients, setIngredients] = useState<any[]>([]);
     const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);

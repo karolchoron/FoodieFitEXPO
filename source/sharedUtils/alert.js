@@ -20,6 +20,6 @@ const alertPolyfill = (title, description, options = []) => {
 
 // komponent react native alert domyslnie nie dziala na Web.
 // Uzyj alertPolyfill na platformie webowej, a domyslny Alert na platformach mobilnych
-const alert = Platform.OS === 'web' ? alertPolyfill : Alert.alert;
+const Alert = Platform.OS === 'web' ? alertPolyfill : Alert.alert;
 
-export default alert;
+export default Alert;

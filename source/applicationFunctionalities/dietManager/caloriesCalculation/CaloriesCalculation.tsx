@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, TextInput, KeyboardAvoidingView, ScrollView, TouchableOpacity } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-import CaloriesContext from '../../sharedUtils/CaloriesContext';
-import { CountCalories } from './CaloriesManagement';
-import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../data/FirebaseConfig';
+import CaloriesContext from '../../../sharedUtils/CaloriesContext';
+import { CountCalories } from './CaloriesController';
+import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../../data/FirebaseConfig';
 import { get, ref } from 'firebase/database';
 import { onAuthStateChanged } from 'firebase/auth';
 import styles from './CaloriesStyles';

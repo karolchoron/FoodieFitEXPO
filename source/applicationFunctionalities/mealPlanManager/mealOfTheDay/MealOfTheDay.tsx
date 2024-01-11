@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Text, View, SafeAreaView, Image } from 'react-native';
 import { MealOfTheDayController} from './MealOfTheDayController';
-import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../data/FirebaseConfig';
+import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../../data/FirebaseConfig';
 import { get, ref } from 'firebase/database';
 import { onAuthStateChanged } from 'firebase/auth';
 import styles from './MealOfTheDayStyles';

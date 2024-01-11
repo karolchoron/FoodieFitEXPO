@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { StyleSheet, Text, View, KeyboardAvoidingView, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, View, KeyboardAvoidingView, ScrollView, TouchableOpacity } from 'react-native';
 import { get, ref } from 'firebase/database';
 import { onAuthStateChanged } from 'firebase/auth';
-import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../data/FirebaseConfig';
-import alert from '../../sharedUtils/alert';
+import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../../data/FirebaseConfig';
+import alert from '../../../sharedUtils/Alert';
 import { OneDayMealController } from './OneDayMealController';
-import CaloriesContext from '../../sharedUtils/CaloriesContext';
+import CaloriesContext from '../../../sharedUtils/CaloriesContext';
 import styles from './OneDayMealStyles';
 import '../../interfaces/ProductInterface';
 import '../../interfaces/DishInterface';

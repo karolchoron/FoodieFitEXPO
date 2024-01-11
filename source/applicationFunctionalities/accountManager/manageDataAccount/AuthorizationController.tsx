@@ -1,19 +1,13 @@
-import alert from '../../sharedUtils/alert';
-import { RootStackParamList } from '../../sharedUtils/Types';
-import { StackNavigationProp } from '@react-navigation/stack';
 import { updatePassword, reauthenticateWithCredential, EmailAuthProvider, deleteUser } from 'firebase/auth';
-import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../data/FirebaseConfig';
+import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../../data/FirebaseConfig';
+import { RootStackParamList } from '../../../sharedUtils/Types';
+import { StackNavigationProp } from '@react-navigation/stack';
 import { ref, remove, update } from 'firebase/database';
+import alert from '../../../sharedUtils/Alert';
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>;
 type Props = {
     navigation: ProfileScreenNavigationProp;
-};
-
-const UserSingOut = ({ navigation }: Props, setUserLogged: any) => {
-    FIREBASE_AUTH.signOut().then(() => alert("Pomyślnie wylogowano"));
-    setUserLogged(false);
-    navigation.navigate('Home');
 };
 
 const UserPasswordChange = (currentPassword: string, newPassword: string) => {
@@ -101,6 +95,12 @@ const DeleteAccount = ({ navigation }: Props, setUserLogged: any) => {
     } else {
         alert("Nie zalogowano użytkownika.");
     }
+};
+
+const UserSingOut = ({ navigation }: Props, setUserLogged: any) => {
+    FIREBASE_AUTH.signOut().then(() => alert("Pomyślnie wylogowano"));
+    setUserLogged(false);
+    navigation.navigate('Home');
 };
 
 export { UserSingOut, UserPasswordChange, DeleteAccount, UserNameChange };
