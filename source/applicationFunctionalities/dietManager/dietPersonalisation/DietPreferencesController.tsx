@@ -5,7 +5,7 @@ import { get, ref, update } from 'firebase/database';
 import { onAuthStateChanged } from 'firebase/auth';
 import alert from '../../../sharedUtils/Alert';
 import styles from './DietPreferencesStyles';
-import '../../interfaces/IngredientInterface';
+import '../../../interfaces/IngredientInterface';
 
 export const DietPreferencesController = () => {
     const [dietTypeSelectedValue, setDietTypeSelectedValue] = useState("Klasyczna");

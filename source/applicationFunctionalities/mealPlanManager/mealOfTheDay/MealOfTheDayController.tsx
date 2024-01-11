@@ -1,7 +1,7 @@
 import { ref, get, update } from 'firebase/database';
 import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../../data/FirebaseConfig';
-import '../../interfaces/ProductInterface';
-import '../../interfaces/DishInterface';
+import '../../../interfaces/ProductInterface';
+import '../../../interfaces/DishInterface';
 
 export const MealOfTheDayController = () => {
     const generateMealOfTheDay = async (): Promise<Dish | null> => {

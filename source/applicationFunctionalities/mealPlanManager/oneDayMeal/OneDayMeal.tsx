@@ -7,8 +7,8 @@ import alert from '../../../sharedUtils/Alert';
 import { OneDayMealController } from './OneDayMealController';
 import CaloriesContext from '../../../sharedUtils/CaloriesContext';
 import styles from './OneDayMealStyles';
-import '../../interfaces/ProductInterface';
-import '../../interfaces/DishInterface';
+import '../../../interfaces/ProductInterface';
+import '../../../interfaces/DishInterface';
 
 const OneDayMeal = () => {
     const [totalCalories, setTotalCalories] = useState(0);

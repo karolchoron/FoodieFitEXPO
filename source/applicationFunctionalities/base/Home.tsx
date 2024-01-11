@@ -16,7 +16,7 @@ const Home = ({ navigation }: Props) => {
   return (
     <SafeAreaView style={styles.container}>
 
-      <Image source={require('../../assets/images/logo.png')} style={styles.image} />
+      <Image source={require('../../../assets/images/logo.png')} style={styles.image} />
 
       <Text style={styles.headerText}>
         FoodieFit

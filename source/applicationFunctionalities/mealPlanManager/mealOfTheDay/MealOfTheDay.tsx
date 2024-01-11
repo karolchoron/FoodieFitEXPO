@@ -5,8 +5,8 @@ import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../../data/FirebaseConfig';
 import { get, ref } from 'firebase/database';
 import { onAuthStateChanged } from 'firebase/auth';
 import styles from './MealOfTheDayStyles';
-import '../../interfaces/ProductInterface';
-import '../../interfaces/DishInterface';
+import '../../../interfaces/ProductInterface';
+import '../../../interfaces/DishInterface';
 
 const MealOfTheDay = () => {
   const [userName, setUserName] = useState('');
@@ -47,7 +47,7 @@ const MealOfTheDay = () => {
   return (
     <SafeAreaView style={styles.container}>
 
-      <Image source={require('../../../assets/images/logo.png')} style={styles.image} />
+      <Image source={require('../../../../assets/images/logo.png')} style={styles.image} />
 
       <Text style={styles.headerText}>
         FoodieFit

@@ -7,9 +7,9 @@ import alert from '../../../sharedUtils/Alert';
 import { Diet7DaysController} from './Diet7DaysController';
 import CaloriesContext from '../../../sharedUtils/CaloriesContext';
 import styles from './Diet7DaysStyles';
-import '../../interfaces/ProductInterface';
-import '../../interfaces/DishInterface';
-import '../../interfaces/DayPlanInterface';
+import '../../../interfaces/ProductInterface';
+import '../../../interfaces/DishInterface';
+import '../../../interfaces/DayPlanInterface';
 
 const Diet7Days = () => {
     const { pickMealsFor7Days } = Diet7DaysController();
