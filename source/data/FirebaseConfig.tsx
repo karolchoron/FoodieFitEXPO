@@ -1,6 +1,5 @@
 import { getDatabase } from 'firebase/database';
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import { getAuth } from 'firebase/auth';
 
 // Konfiguracja poswiadczen do bazy Firebase
@@ -15,10 +14,9 @@ const firebaseConfig = {
   databaseURL: "https://foodiefit-2f8e3-default-rtdb.europe-west1.firebasedatabase.app",
 };
 
-// Initialize Firebase
+// Inicializacja Firebase
 const FIREBASE_APP = initializeApp(firebaseConfig);
 const FIREBASE_AUTH = getAuth(FIREBASE_APP);
 const FIREBASE_DATABASE = getDatabase(FIREBASE_APP);
-const FIREBASE_ANALYTICS = getAnalytics(FIREBASE_APP);
 
-export { FIREBASE_APP, FIREBASE_DATABASE, FIREBASE_AUTH, FIREBASE_ANALYTICS }
+export { FIREBASE_APP, FIREBASE_DATABASE, FIREBASE_AUTH }

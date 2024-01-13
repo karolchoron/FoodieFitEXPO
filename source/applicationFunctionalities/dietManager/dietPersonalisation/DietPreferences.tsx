@@ -4,16 +4,17 @@ import { Picker } from '@react-native-picker/picker';
 import '../../../interfaces/IngredientInterface';
 import styles from './DietPreferencesStyles';
 import { DietPreferencesController } from './DietPreferencesController'; 
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const DietPreferences = () => {
     const { dietTypeSelectedValue, setDietTypeSelectedValue, ingredients, selectedIngredients, renderIngredient , UserDietTypeChange} = DietPreferencesController();
 
     return (
         <KeyboardAvoidingView style={styles.container}>
-            <View>
+            <SafeAreaView>
                 <View style={styles.dataView}>
                     <Text style={styles.contentText}>
-                        Wprowadź zmiany w preferencji swojej diety
+                       Wprowadź zmiany w preferencji swojej diety
                     </Text>
                 </View>
                 <View style={styles.separator}></View>
@@ -36,7 +37,7 @@ const DietPreferences = () => {
                     <Text>{'\n'}</Text>
                 </View>
                 <View style={styles.separator}></View>
-            </View>
+            </SafeAreaView>
             <Text style={styles.contentText}>
                 Wybierz składniki, które chcesz {'\n'}
                 wykluczyć ze swoich posiłków: {"\n"}
