@@ -26,24 +26,12 @@ const UserLogin = ({ navigation }: Props, userEmail: string, userPassword: strin
         })
         .catch((error) => {
             switch (error.code) {
-                case 'auth/invalid-login-credentials':
+                case 'auth/invalid-credential':
                     alert("Nieprawidłowe dane logowania.");
                     break;
 
                 case 'auth/invalid-email':
                     alert("Nieprawidłowy adres email.");
-                    break;
-
-                case 'auth/user-disabled':
-                    alert("To konto użytkownika zostało wyłączone.");
-                    break;
-
-                case 'auth/user-not-found':
-                    alert("Nie znaleziono użytkownika z tym adresem email.");
-                    break;
-
-                case 'auth/wrong-password':
-                    alert("Nieprawidłowe hasło.");
                     break;
 
                 case 'auth/too-many-requests':

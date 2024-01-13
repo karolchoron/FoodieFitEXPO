@@ -16,21 +16,21 @@ const UserPasswordChange = (currentPassword: string, newPassword: string) => {
     if (user) {
         const credential = EmailAuthProvider.credential(user.email as string, currentPassword);
 
-        if (currentPassword == "" && newPassword == "") {
+        if (currentPassword == "" || newPassword == "") {
             alert("Pola zmiany hasła nie mogą być puste.");
             return;
         }
 
         reauthenticateWithCredential(user, credential).then(() => {
             if (currentPassword === newPassword) {
-                alert("Nowe hasło nie może być takie samo jak obecne hasło.");
+                alert("aNowe hasło nie może być takie samo jak obecne hasło.");
                 return;
             }
 
             updatePassword(user, newPassword).then(() => {
                 alert("Hasło zostało zmienione.");
             }).catch((error) => {
-                alert("Wystąpił błąd podczas zmiany hasła.");
+                alert("Hasło nie spełnia wymagań bezpieczeństwa!", "Hasło powinno zawierać minimum 6 znaków");
             });
 
         }).catch((error) => {

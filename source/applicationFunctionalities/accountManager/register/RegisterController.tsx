@@ -53,10 +53,6 @@ const RegisterUser = ({ navigation }: Props, userEmail: string, userPassword: st
                         alert("Podany adres e-mail jest nieprawidłowy.");
                         break;
 
-                    case 'auth/operation-not-allowed':
-                        alert("Rejestracja jest obecnie wyłączona.");
-                        break;
-
                     case 'auth/weak-password':
                         alert("Hasło jest zbyt słabe", "Hasło musi zawierać minimum 6 znaków.");
                         break;
