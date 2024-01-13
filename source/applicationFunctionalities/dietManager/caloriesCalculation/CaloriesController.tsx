@@ -21,19 +21,19 @@ const CountCalories = (textAge: string, textWeight: string, textGrowth: string, 
 
         switch (activitySelectedValue) {
             case "znikomaAktywnosc":
-                countedCaloriesDemand = countedCaloriesDemand * 1.4;
+                countedCaloriesDemand = countedCaloriesDemand * 1;
                 break;
 
             case "niskaAktywnosc":
-                countedCaloriesDemand = countedCaloriesDemand * 1.5;
+                countedCaloriesDemand = countedCaloriesDemand * 1.2;
                 break;
 
             case "sredniaAktywnosc":
-                countedCaloriesDemand = countedCaloriesDemand * 1.6;
+                countedCaloriesDemand = countedCaloriesDemand * 1.4;
                 break;
 
             case "wysokaAktywnosc":
-                countedCaloriesDemand = countedCaloriesDemand * 1.7;
+                countedCaloriesDemand = countedCaloriesDemand * 1.6;
                 break;
 
             case "bardzoWysokaAktywnosc":
@@ -41,7 +41,7 @@ const CountCalories = (textAge: string, textWeight: string, textGrowth: string, 
                 break;
             default:
 
-                countedCaloriesDemand = countedCaloriesDemand * 1.6;
+                countedCaloriesDemand = countedCaloriesDemand * 1.4;
                 break;
         }
 
