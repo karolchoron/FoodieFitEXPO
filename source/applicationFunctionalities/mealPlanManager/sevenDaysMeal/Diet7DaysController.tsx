@@ -4,9 +4,14 @@ import '../../../interfaces/ProductInterface';
 import '../../../interfaces/DishInterface';
 
 export const Diet7DaysController = () => {
+
+    // zakres gorny i dolny kalorii dania
+    const lowerLimit = 0.9;
+    const upperLimit = 1.1;
+
     // sprawdza danie w danym zakresie kalorii
     const isWithinCalorieRange = (mealCalories: number, targetCalories: number) =>
-        mealCalories >= targetCalories * 0.85 && mealCalories <= targetCalories * 1.25;
+        mealCalories >= targetCalories * lowerLimit && mealCalories <= targetCalories * upperLimit;
 
     // wybiera losowy posilek
     const pickRandomMeal7Days = (mealOptions: Dish[], mealType: string): Dish | null => {

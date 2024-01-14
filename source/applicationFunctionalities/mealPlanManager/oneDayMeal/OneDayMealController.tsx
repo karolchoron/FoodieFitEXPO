@@ -17,8 +17,8 @@ export const OneDayMealController = () => {
 
     const pickMealsBasedOnCalories = async () => {
         // zakres gorny i dolny kalorii dania
-        const lowerLimit = 0.85;
-        const upperLimit = 1.25;
+        const lowerLimit = 0.9;
+        const upperLimit = 1.1;
 
         const isWithinCalorieRange = (mealCalories: number, targetCalories: number) =>
             mealCalories >= targetCalories * lowerLimit && mealCalories <= targetCalories * upperLimit;

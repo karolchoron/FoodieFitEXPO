@@ -80,49 +80,6 @@ const OneDayMeal = () => {
         }
     };
 
-    // const renderDishes = (dishes: Record<string, Dish>, nameOfTheMeal: string) => (
-    //     <View style={styles.mealsList}>
-
-    //         <Text style={styles.mealTitle}>{"\n"}{nameOfTheMeal}</Text>
-    //         {Object.entries(dishes).map(([dishName, dishDetails]) => {
-    //             if (!dishDetails) return null; // Sprawdzenie, czy szczegóły dania są dostępne
-
-    //             return (
-    //                 <View style={styles.mealContainer} key={dishName}>
-    //                     <Text style={styles.mealName}>
-    //                         {dishDetails.name}
-    //                     </Text>
-    //                     <Text style={styles.mealDescription}>
-    //                         {dishDetails.totalCalories} kalorii
-    //                     </Text>
-    //                     {dishDetails.products && (
-    //                         <View style={styles.mealsList}>
-    //                             <Text style={styles.mealDataFontDescription}>{'\n'}Skład dania:</Text>
-    //                             <Text>{'\n'}</Text>
-    //                             {Object.entries(dishDetails.products).map(([productName, productDetails]) => {
-    //                                 if (!productDetails) return null; // Sprawdzenie, czy szczegóły produktu są dostępne
-
-    //                                 return (
-    //                                     <View style={styles.mealsList} key={productName}>
-    //                                         <Text style={styles.productTitle}>
-    //                                             {productDetails.name}
-    //                                         </Text>
-    //                                         <Text style={styles.productDescription}>
-    //                                             {productDetails.quantity && !productDetails.weight && <Text>Ilość: {productDetails.quantity}</Text>}
-    //                                             {!productDetails.quantity && productDetails.weight && <Text>Waga: {productDetails.weight} g</Text>}
-    //                                             <Text>, {productDetails.calories} kcal</Text>
-    //                                         </Text>
-    //                                     </View>
-    //                                 );
-    //                             })}
-    //                         </View>
-    //                     )}
-    //                 </View>
-    //             );
-    //         })}
-    //     </View>
-    // );
-
     return (
         <KeyboardAvoidingView style={styles.container}>
             <ScrollView showsVerticalScrollIndicator={false}>
@@ -141,7 +98,7 @@ const OneDayMeal = () => {
 
                 {caloriesPlanView ? (
                     <>
-                        <Text style={styles.TextYourCalories}>Twoje zapotrzebowanie kaloryczne: {calories}</Text>
+                        {/* <Text style={styles.TextYourCalories}>Twoje zapotrzebowanie kaloryczne: {calories}</Text> */}
                         <Text style={styles.TextYourCalories}>Suma dzisiejszych kalorii: {totalCalories}</Text>
                         {renderDishes(breakfast, "Śniadanie")}
                         {renderDishes(dinner, "Obiad")}

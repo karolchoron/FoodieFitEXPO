@@ -7,8 +7,8 @@ export const MealOfTheDayController = () => {
     const generateMealOfTheDay = async (): Promise<Dish | null> => {
 
         // zakres gorny i dolny kalorii dania
-        const lowerLimit = 0.85;
-        const upperLimit = 1.25;
+        const lowerLimit = 0.9;
+        const upperLimit = 1.1;
 
         const pickRandomMeal = (mealOptions: Dish[]): Dish | null => {
             if (mealOptions.length === 0) return null;
