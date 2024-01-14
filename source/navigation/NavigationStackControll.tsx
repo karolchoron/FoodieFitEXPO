@@ -98,7 +98,7 @@ const TabNavigation = () => {
                                     tabBarLabelStyle: {
                                         fontSize: 20,
                                     },
-                                    tabBarLabel: 'Plan diety',
+                                    tabBarLabel: 'Jednodniowy plan diety',
 
                                     tabBarIcon: () =>
                                         <Image
@@ -125,7 +125,7 @@ const TabNavigation = () => {
                                     tabBarLabelStyle: {
                                         fontSize: 20,
                                     },
-                                    tabBarLabel: 'Tygodniowy plan',
+                                    tabBarLabel: 'Tygodniowy plan diety',
                                     tabBarIcon: () =>
                                         <Image
                                             source={require('../../assets/images/diet7days.png')}
@@ -147,7 +147,7 @@ const TabNavigation = () => {
                                 },
                                 headerTitle: "",
                                 headerShown: false,
-                                tabBarLabel: 'Plan diety',
+                                tabBarLabel: 'Jednodniowy plan diety',
                                 tabBarIcon: () =>
                                     <Image
                                         source={require('../../assets/images/diet.png')}
@@ -175,7 +175,7 @@ const TabNavigation = () => {
                                 },
                                 headerTitle: "",
                                 headerShown: false,
-                                tabBarLabel: 'Tygodniowy plan',
+                                tabBarLabel: 'Tygodniowy plan diety',
                                 tabBarIcon: () =>
                                     <Image
                                         source={require('../../assets/images/diet7days.png')}

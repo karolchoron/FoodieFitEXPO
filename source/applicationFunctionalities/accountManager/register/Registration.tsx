@@ -91,7 +91,7 @@ const Registration = ({ navigation }: Props) => {
             onChangeText={setUserNameText}
             onFocus={userNameHandleFocus}
             onBlur={userNameHandleBlur}
-            placeholder="Wprowadź imie"
+            placeholder="Wprowadź imię"
             keyboardType='default'
             style={styles.textInput}
             placeholderTextColor={isUserNameFocused ? 'transparent' : 'grey'}
