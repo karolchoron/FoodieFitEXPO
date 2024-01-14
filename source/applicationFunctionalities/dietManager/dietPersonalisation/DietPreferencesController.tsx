@@ -5,12 +5,12 @@ import { get, ref, update } from 'firebase/database';
 import { onAuthStateChanged } from 'firebase/auth';
 import alert from '../../../sharedUtils/Alert';
 import styles from './DietPreferencesStyles';
-import '../../../interfaces/IngredientInterface';
+import '../../../interfaces/ProductInterface';
 
 export const DietPreferencesController = () => {
     const [dietTypeSelectedValue, setDietTypeSelectedValue] = useState("Klasyczna");
-    const [ingredients, setIngredients] = useState<any[]>([]);
-    const [selectedIngredients, setSelectedIngredients] = useState<string[]>([]);
+    const [products, setProducts] = useState<any[]>([]);
+    const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
 
     // pobranie z bazy danych informacji o zapotrzebowaniu kalorycznym dla zalogowanego uzytkownika
     useEffect(() => {
@@ -35,20 +35,20 @@ export const DietPreferencesController = () => {
         });
 
         // pobieranie składnikow z bazy
-        const ingredientsRef = ref(FIREBASE_DATABASE, 'ingredients');
-        get(ingredientsRef).then((snapshot) => {
+        const productsRef = ref(FIREBASE_DATABASE, 'products');
+        get(productsRef).then((snapshot) => {
             if (snapshot.exists()) {
-                const fetchedIngredients = snapshot.val();
+                const fetchedProducts = snapshot.val();
                 // Konwersja obiektu na tablice obiektow
-                const ingredientsArray = Object.keys(fetchedIngredients).map(key => {
+                const productsArray = Object.keys(fetchedProducts).map(key => {
                     return {
                         id: key,
-                        ...fetchedIngredients[key]
+                        ...fetchedProducts[key]
                     };
                 });
 
-                const ingredientNames = ingredientsArray.map(ingredient => ingredient.name);
-                setIngredients(ingredientsArray);
+                const productNames = productsArray.map(product => product.name);
+                setProducts(productsArray);
             } else {
                 console.log("Błąd, brak składników");
             }
@@ -69,7 +69,7 @@ export const DietPreferencesController = () => {
                 if (snapshot.exists()) {
                     const userData = snapshot.val();
                     setDietTypeSelectedValue(userData.preferedTypeOfDiet);
-                    setSelectedIngredients(userData.uwnatedProducts ? Object.keys(userData.uwnatedProducts) : []);
+                    setSelectedProducts(userData.uwnatedProducts ? Object.keys(userData.uwnatedProducts) : []);
                 } else {
                     console.log("Błąd, brak dostępnych danych");
                 }
@@ -80,21 +80,21 @@ export const DietPreferencesController = () => {
 
         fetchUserData();
 
-        const fetchIngredients = async () => {
-            const ingredientsRef = ref(FIREBASE_DATABASE, 'ingredients');
-            const snapshot = await get(ingredientsRef);
+        const fetchProducts = async () => {
+            const productsRef = ref(FIREBASE_DATABASE, 'products');
+            const snapshot = await get(productsRef);
             if (snapshot.exists()) {
-                const fetchedIngredients = snapshot.val();
-                const ingredientsArray = Object.keys(fetchedIngredients).map(key => {
-                    return { id: key, ...fetchedIngredients[key] };
+                const fetchedProducts = snapshot.val();
+                const productsArray = Object.keys(fetchedProducts).map(key => {
+                    return { id: key, ...fetchedProducts[key] };
                 });
-                setIngredients(ingredientsArray);
+                setProducts(productsArray);
             } else {
                 console.log("Błąd, brak składników");
             }
         };
 
-        fetchIngredients();
+        fetchProducts();
     }, []);
 
     // aktualizacja niechcianych skladnikow w bazie
@@ -122,14 +122,14 @@ export const DietPreferencesController = () => {
     };
 
     // Obsługa wyboru składników
-    const handleSelectIngredient = async (name: string) => {
+    const handleSelectProduct = async (name: string) => {
         const user = FIREBASE_AUTH.currentUser;
         if (!user) {
             console.log("Użytkownik nie jest zalogowany");
             return;
         }
 
-        await setSelectedIngredients(prevSelected => {
+        await setSelectedProducts(prevSelected => {
             const newSelected = prevSelected.includes(name) ?
                 prevSelected.filter(item => item !== name) :
                 [...prevSelected, name];
@@ -140,14 +140,14 @@ export const DietPreferencesController = () => {
         });
     };
 
-    const renderIngredient = ({ item }: { item: Ingredient }) => {
-        const isSelected = selectedIngredients.includes(item.name);
+    const renderProduct = ({ item }: { item: Product }) => {
+        const isSelected = selectedProducts.includes(item.name);
         const backgroundColor = isSelected ? "red" : "lightgrey";
 
         return (
             <TouchableOpacity
-                onPress={() => handleSelectIngredient(item.name)}
-                style={[styles.ingredientItem, { backgroundColor }]}>
+                onPress={() => handleSelectProduct(item.name)}
+                style={[styles.productItem, { backgroundColor }]}>
                 <Text style={styles.title}>{item.name}</Text>
             </TouchableOpacity>
         );
@@ -174,5 +174,5 @@ export const DietPreferencesController = () => {
         }
     };
 
-    return { dietTypeSelectedValue, setDietTypeSelectedValue, ingredients, selectedIngredients, renderIngredient, handleSelectIngredient , UserDietTypeChange};
+    return { dietTypeSelectedValue, setDietTypeSelectedValue, products, selectedProducts, renderProduct, handleSelectProduct , UserDietTypeChange};
 };

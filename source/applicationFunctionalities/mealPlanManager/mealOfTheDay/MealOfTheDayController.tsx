@@ -68,7 +68,7 @@ export const MealOfTheDayController = () => {
 
                 let targetDinnerCalories = 0;
                 // Przy pierwszym logowaniu nie ma danych odnosnie obliczonych kalorii. 
-                // Dlatego pierwsze danie dnia bazuje na przyblizonej wartosci = 2500 kalorii na dzien.
+                // Dlatego pierwsze danie dnia bazuje na przyblizonej wartosci = 2200 kalorii na dzien.
                 // Kolejne dania dnia sa generowane na podstawie obliczonych kalorii.
                 if (userCaloriesQuantity == 0) {
                     targetDinnerCalories = 2200 * 0.40;

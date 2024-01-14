@@ -6,8 +6,6 @@ import styles from './OneDayMealStyles';
 import alert from '../../../sharedUtils/Alert';
 import '../../../interfaces/ProductInterface';
 import '../../../interfaces/DishInterface';
-import '../../../interfaces/ProductInterface';
-import '../../../interfaces/DishInterface';
 
 export const OneDayMealController = () => {
     const [breakfast, setBreakfast] = useState<Record<string, Dish>>({});

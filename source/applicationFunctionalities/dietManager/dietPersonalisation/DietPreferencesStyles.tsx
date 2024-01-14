@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     backgroundColor: '#f0f0eb',
   },
-  ingredientItem: {
+  productItem: {
     padding: 10,
     marginVertical: 8,
     marginHorizontal: 16,

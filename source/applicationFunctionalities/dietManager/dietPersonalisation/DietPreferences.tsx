@@ -1,13 +1,13 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, KeyboardAvoidingView, FlatList } from 'react-native';
 import { Picker } from '@react-native-picker/picker';
-import '../../../interfaces/IngredientInterface';
+import '../../../interfaces/ProductInterface';
 import styles from './DietPreferencesStyles';
 import { DietPreferencesController } from './DietPreferencesController'; 
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 const DietPreferences = () => {
-    const { dietTypeSelectedValue, setDietTypeSelectedValue, ingredients, selectedIngredients, renderIngredient , UserDietTypeChange} = DietPreferencesController();
+    const { dietTypeSelectedValue, setDietTypeSelectedValue, products, selectedProducts, renderProduct , UserDietTypeChange} = DietPreferencesController();
 
     return (
         <KeyboardAvoidingView style={styles.container}>
@@ -43,10 +43,10 @@ const DietPreferences = () => {
                 wykluczyć ze swoich posiłków: {"\n"}
             </Text>
             <FlatList
-                data={ingredients}
-                renderItem={renderIngredient}
+                data={products}
+                renderItem={renderProduct}
                 keyExtractor={(item) => item.id}
-                extraData={selectedIngredients}
+                extraData={selectedProducts}
             />
         </KeyboardAvoidingView>
     );
