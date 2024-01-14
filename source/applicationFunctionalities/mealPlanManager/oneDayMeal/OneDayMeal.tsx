@@ -98,7 +98,7 @@ const OneDayMeal = () => {
 
                 {caloriesPlanView ? (
                     <>
-                        {/* <Text style={styles.TextYourCalories}>Twoje zapotrzebowanie kaloryczne: {calories}</Text> */}
+                        <Text style={styles.TextYourCalories}>Twoje zapotrzebowanie kaloryczne: {calories}</Text>
                         <Text style={styles.TextYourCalories}>Suma dzisiejszych kalorii: {totalCalories}</Text>
                         {renderDishes(breakfast, "Śniadanie")}
                         {renderDishes(dinner, "Obiad")}
