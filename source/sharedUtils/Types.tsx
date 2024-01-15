@@ -1,7 +1,7 @@
-// Do nawigacji - Navigate
 export type RootStackParamList = {
   App: undefined;
   Account: undefined;
+  User: undefined;
   Diet: undefined;
   Diet7Days: undefined;
   CaloriesCalculation: undefined;
