@@ -15,7 +15,7 @@ import OneDayMealPage from '../applicationFunctionalities/mealPlanManager/oneDay
 import Diet7DaysPage from '../applicationFunctionalities/mealPlanManager/sevenDaysMeal/Diet7Days';
 import LoginPage from '../applicationFunctionalities/accountManager/login/Login';
 import AuthorizationContext from '../sharedUtils/AuthorizationContext';
-import AboutPage from '../applicationFunctionalities/about/About';
+import AboutPage from '../applicationFunctionalities/other/about/About';
 import HomePage from '../applicationFunctionalities/base/Home';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
