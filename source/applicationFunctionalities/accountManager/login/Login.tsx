@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
 import {Text, View, SafeAreaView, TextInput, TouchableOpacity } from 'react-native';
 import styles from './LoginStyles';
-import { RootStackParamList } from '../../../sharedUtils/Types';
+import { RootStackParamList } from '../../../other/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
-import AuthorizationContext from '../../../sharedUtils/AuthorizationContext';
+import AuthorizationContext from '../../../other/AuthorizationContext';
 import { UserLogin } from './LoginController';
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>;

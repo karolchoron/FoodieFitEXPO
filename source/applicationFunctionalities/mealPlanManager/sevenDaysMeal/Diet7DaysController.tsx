@@ -49,7 +49,6 @@ export const Diet7DaysController = () => {
             // Pobranie danych uzytkownika i niechcianych produktow
             const user = FIREBASE_AUTH.currentUser;
             if (!user) {
-                alert("user nie zalogowany")
                 console.log("Użytkownik nie jest zalogowany");
             }
 

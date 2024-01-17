@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { Text, View, TouchableOpacity, TextInput, KeyboardAvoidingView, ScrollView } from 'react-native';
-import { RootStackParamList } from '../../../sharedUtils/Types';
+import { RootStackParamList } from '../../../other/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
-import AuthorizationContext from '../../../sharedUtils/AuthorizationContext';
+import AuthorizationContext from '../../../other/AuthorizationContext';
 import { RegisterUser } from './RegisterController';
 import { Picker } from '@react-native-picker/picker';
 import styles from './RegistrationStyles';

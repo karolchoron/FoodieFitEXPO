@@ -25,7 +25,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png",
-      "title": "FoodieFit"
+      "title": "FoodieFit",
+      "bundler": "metro"
     }
   }
 }

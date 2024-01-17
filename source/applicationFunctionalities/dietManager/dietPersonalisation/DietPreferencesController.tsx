@@ -3,7 +3,7 @@ import { Text, TouchableOpacity } from 'react-native';
 import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../../data/FirebaseConfig';
 import { get, ref, update } from 'firebase/database';
 import { onAuthStateChanged } from 'firebase/auth';
-import alert from '../../../sharedUtils/Alert';
+import alert from '../../../other/Alert';
 import styles from './DietPreferencesStyles';
 import '../../../interfaces/ProductInterface';
 

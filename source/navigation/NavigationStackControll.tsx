@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Image, Platform, Keyboard } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../sharedUtils/Types';
+import { RootStackParamList } from '../other/Types';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -14,7 +14,7 @@ import DietPreferencesPage from '../applicationFunctionalities/dietManager/dietP
 import OneDayMealPage from '../applicationFunctionalities/mealPlanManager/oneDayMeal/OneDayMeal';
 import Diet7DaysPage from '../applicationFunctionalities/mealPlanManager/sevenDaysMeal/Diet7Days';
 import LoginPage from '../applicationFunctionalities/accountManager/login/Login';
-import AuthorizationContext from '../sharedUtils/AuthorizationContext';
+import AuthorizationContext from '../other/AuthorizationContext';
 import AboutPage from '../applicationFunctionalities/other/about/About';
 import HomePage from '../applicationFunctionalities/base/Home';
 

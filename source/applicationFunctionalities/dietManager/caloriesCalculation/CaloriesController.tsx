@@ -1,4 +1,4 @@
-import alert from '../../../sharedUtils/Alert';
+import alert from '../../../other/Alert';
 import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../../data/FirebaseConfig';
 import { get, ref, set } from 'firebase/database';
 

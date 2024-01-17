@@ -1,4 +1,4 @@
-import { RootStackParamList } from '../sharedUtils/Types';
+import { RootStackParamList } from '../other/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>;

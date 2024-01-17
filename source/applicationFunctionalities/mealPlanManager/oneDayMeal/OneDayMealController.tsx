@@ -3,7 +3,7 @@ import { ref, get } from 'firebase/database';
 import { Text, View } from 'react-native';
 import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../../data/FirebaseConfig';
 import styles from './OneDayMealStyles';
-import alert from '../../../sharedUtils/Alert';
+import alert from '../../../other/Alert';
 import '../../../interfaces/ProductInterface';
 import '../../../interfaces/DishInterface';
 

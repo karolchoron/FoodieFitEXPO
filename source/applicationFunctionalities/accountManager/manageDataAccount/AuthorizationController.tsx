@@ -1,9 +1,9 @@
 import { updatePassword, reauthenticateWithCredential, EmailAuthProvider, deleteUser } from 'firebase/auth';
 import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../../data/FirebaseConfig';
-import { RootStackParamList } from '../../../sharedUtils/Types';
+import { RootStackParamList } from '../../../other/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { ref, remove, update } from 'firebase/database';
-import alert from '../../../sharedUtils/Alert';
+import alert from '../../../other/Alert';
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>;
 type Props = {

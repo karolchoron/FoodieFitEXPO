@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, SafeAreaView, Image, TouchableOpacity } from 'react-native';
-import { RootStackParamList } from '../../sharedUtils/Types';
+import { RootStackParamList } from '../../other/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { NavigationFunctions } from '../../navigation/NavigationControll';
 import styles from './HomeStyles';
