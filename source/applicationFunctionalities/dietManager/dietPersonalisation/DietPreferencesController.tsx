@@ -47,7 +47,6 @@ export const DietPreferencesController = () => {
                     };
                 });
 
-                const productNames = productsArray.map(product => product.name);
                 setProducts(productsArray);
             } else {
                 console.log("Błąd, brak składników");
