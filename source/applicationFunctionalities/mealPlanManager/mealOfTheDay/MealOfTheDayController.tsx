@@ -51,7 +51,7 @@ export const MealOfTheDayController = () => {
             if (userData.dateOfGenerateTheDayDish == "" || userData.dateOfGenerateTheDayDish != currentDate) {
                 // wybranie typu diety do generowania
                 if (userDietType == "klasyczna") {
-                    mealsRef = ref(FIREBASE_DATABASE, '/dishes/all/dinner');
+                    mealsRef = ref(FIREBASE_DATABASE, '/dishes/classic/dinner');
                 }
                 else {
                     mealsRef = ref(FIREBASE_DATABASE, '/dishes/wegetarian/dinner');
@@ -109,7 +109,7 @@ export const MealOfTheDayController = () => {
                 // potem pobiera danie z bazy
                 // i zwraca
                 if (userDietType === "klasyczna") {
-                    mealsRef = ref(FIREBASE_DATABASE, `/dishes/all/dinner`);
+                    mealsRef = ref(FIREBASE_DATABASE, `/dishes/classic/dinner`);
                 } else {
                     mealsRef = ref(FIREBASE_DATABASE, `/dishes/wegetarian/dinner`);
                 }

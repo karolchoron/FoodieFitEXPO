@@ -72,7 +72,7 @@ export const Diet7DaysController = () => {
             // Wybranie typu diety do generowania posiłków
             let mealsRef;
             if (userDietType == "Klasyczna") {
-                mealsRef = ref(FIREBASE_DATABASE, '/dishes/all');
+                mealsRef = ref(FIREBASE_DATABASE, '/dishes/classic');
             } else {
                 mealsRef = ref(FIREBASE_DATABASE, '/dishes/wegetarian');
             }
