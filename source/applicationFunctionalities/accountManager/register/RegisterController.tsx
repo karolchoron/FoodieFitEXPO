@@ -4,6 +4,7 @@ import { RootStackParamList } from '../../../other/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
 import alert from '../../../other/Alert';
 import { ref, set } from 'firebase/database';
+import './../../../interfaces/UserInterface';
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>;
 type Props = {

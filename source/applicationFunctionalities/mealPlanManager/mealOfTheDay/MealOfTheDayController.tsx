@@ -22,7 +22,7 @@ export const MealOfTheDayController = () => {
             // Pobranie aktualnie zalogowanego użytkownika
             const user = FIREBASE_AUTH.currentUser;
             if (!user) {
-                console.log("Użytkownik nie jest zalogowany");
+                // console.log("Użytkownik nie jest zalogowany");
                 return null;
             }
 
@@ -30,7 +30,7 @@ export const MealOfTheDayController = () => {
             const userRef = ref(FIREBASE_DATABASE, `users/${user.uid}`);
             const userSnapshot = await get(userRef);
             if (!userSnapshot.exists()) {
-                console.log("Brak danych użytkownika");
+                // console.log("Brak danych użytkownika");
                 return null;
             }
 
@@ -59,7 +59,7 @@ export const MealOfTheDayController = () => {
 
                 const response = await get(mealsRef);
                 if (!response.exists()) {
-                    console.log("Brak danych!");
+                    // console.log("Brak danych!");
                     return null;
                 }
 
@@ -100,7 +100,7 @@ export const MealOfTheDayController = () => {
                     // zwaraca wygenerowane danie dnia
                     return selectedDish;
                 } else {
-                    console.log("Bład w wygenerowaniu dania.");
+                    // console.log("Bład w wygenerowaniu dania.");
                     return null;
                 }
             }
@@ -116,7 +116,7 @@ export const MealOfTheDayController = () => {
 
                 const response = await get(mealsRef);
                 if (!response.exists()) {
-                    console.log("Brak danych!");
+                    // console.log("Brak danych!");
                     return null;
                 }
 
@@ -127,7 +127,7 @@ export const MealOfTheDayController = () => {
             }
 
         } catch (error) {
-            console.error("Błąd pobierania danych:", error);
+            console.error(error);
             return null;
         }
     };

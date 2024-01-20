@@ -30,7 +30,7 @@ export const OneDayMealController = () => {
             // Pobranie aktualnie zalogowanego użytkownika
             const user = FIREBASE_AUTH.currentUser;
             if (!user) {
-                console.log("Użytkownik nie jest zalogowany");
+                // console.log("Użytkownik nie jest zalogowany");
                 return null;
             }
 
@@ -38,7 +38,7 @@ export const OneDayMealController = () => {
             const userRef = ref(FIREBASE_DATABASE, `users/${user.uid}`);
             const userSnapshot = await get(userRef);
             if (!userSnapshot.exists()) {
-                console.log("Brak danych użytkownika");
+                // console.log("Brak danych użytkownika");
                 return null;
             }
             const userData = userSnapshot.val();

@@ -24,13 +24,16 @@ export const DietPreferencesController = () => {
                         const userData = snapshot.val();
                         setDietTypeSelectedValue(userData.preferedTypeOfDiet);
                     } else {
-                        console.log("Błąd, brak dostępnych danych");
+                        return null;
+                        // console.log("Błąd, brak dostępnych danych");
                     }
                 }).catch((error) => {
-                    console.error("Błąd pobierania danych: ", error);
+                    console.error(error);
+                    return null;
                 });
             } else {
-                console.log("Błąd, użytkownik nie jest zalogowany.");
+                return null;
+                //console.log("Błąd, użytkownik nie jest zalogowany.");
             }
         });
 
@@ -49,10 +52,11 @@ export const DietPreferencesController = () => {
 
                 setProducts(productsArray);
             } else {
-                console.log("Błąd, brak składników");
+                return null;
+                // console.log("Błąd, brak składników");
             }
         }).catch((error) => {
-            console.error("Błąd pobierania składników: ", error);
+            console.error(error);
         });
     }, []);
 
@@ -70,10 +74,12 @@ export const DietPreferencesController = () => {
                     setDietTypeSelectedValue(userData.preferedTypeOfDiet);
                     setSelectedProducts(userData.uwnatedProducts ? Object.keys(userData.uwnatedProducts) : []);
                 } else {
-                    console.log("Błąd, brak dostępnych danych");
+                    return null;
+                    // console.log("Błąd, brak dostępnych danych");
                 }
             } else {
-                console.log("Błąd, użytkownik nie jest zalogowany.");
+                return null;
+                // console.log("Błąd, użytkownik nie jest zalogowany.");
             }
         };
 
@@ -124,8 +130,8 @@ export const DietPreferencesController = () => {
     const handleSelectProduct = async (name: string) => {
         const user = FIREBASE_AUTH.currentUser;
         if (!user) {
-            console.log("Użytkownik nie jest zalogowany");
-            return;
+            //console.log("Użytkownik nie jest zalogowany");
+            return null;
         }
 
         await setSelectedProducts(prevSelected => {
@@ -154,17 +160,17 @@ export const DietPreferencesController = () => {
 
     const UserDietTypeChange = (newDietTypeSelectedValue: string) => {
         const user = FIREBASE_AUTH.currentUser;
-    
+
         if (user) {
             const userId = user.uid;
-    
+
             // Aktualizacja preferowanego typu diety w bazie
             const updates: { [key: string]: any } = {};
             updates['/users/' + userId + '/preferedTypeOfDiet'] = newDietTypeSelectedValue;
-    
+
             update(ref(FIREBASE_DATABASE), updates).then(() => {
                 alert("Preferowany typ diety został zmieniony");
-    
+
             }).catch((error) => {
                 alert("Wystąpił błąd podczas zmiany preferowanego typu diety.");
             });
@@ -173,5 +179,5 @@ export const DietPreferencesController = () => {
         }
     };
 
-    return { dietTypeSelectedValue, setDietTypeSelectedValue, products, selectedProducts, renderProduct, handleSelectProduct , UserDietTypeChange};
+    return { dietTypeSelectedValue, setDietTypeSelectedValue, products, selectedProducts, renderProduct, handleSelectProduct, UserDietTypeChange };
 };

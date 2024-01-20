@@ -2,6 +2,7 @@ import { ref, get } from 'firebase/database';
 import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../../data/FirebaseConfig';
 import '../../../interfaces/ProductInterface';
 import '../../../interfaces/DishInterface';
+import alert from '../../../other/Alert';
 
 export const Diet7DaysController = () => {
 
@@ -49,13 +50,15 @@ export const Diet7DaysController = () => {
             // Pobranie danych uzytkownika i niechcianych produktow
             const user = FIREBASE_AUTH.currentUser;
             if (!user) {
-                console.log("Użytkownik nie jest zalogowany");
+                // console.log("Użytkownik nie jest zalogowany");
+                return null;
             }
 
             const userRef = ref(FIREBASE_DATABASE, `users/${user.uid}`);
             const userSnapshot = await get(userRef);
             if (!userSnapshot.exists()) {
-                console.log("Brak danych użytkownika");
+                // console.log("Brak danych użytkownika");
+                return null;
             }
             const userData = userSnapshot.val();
             const userDietType = userData.preferedTypeOfDiet;
@@ -80,7 +83,7 @@ export const Diet7DaysController = () => {
             // Pobieranie i filtracja posiłkow
             const response = await get(mealsRef);
             if (!response.exists()) {
-                console.log("Brak danych o posiłkach");
+                alert('Bład, brak danych o posiłkach');
                 continue;
             }
             const data = response.val();
