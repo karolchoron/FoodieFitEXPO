@@ -264,17 +264,6 @@ const MealOfTheDayDrawerNavigation = () => {
                         />,
                 }} />
 
-                {/* < Drawer.Screen name="LogOut" component={HomePage} options={{
-                    headerTitle: "",
-                    headerShown: false,
-                    drawerLabel: 'Wyloguj się',
-                    drawerIcon: () =>
-                        <Image
-                            source={require('../../assets/images/logout.png')}
-                            style={{ width: 30, height: 30 }}
-                        />,
-                }} /> */}
-
             </Drawer.Navigator>
         </SafeAreaProvider >
     );

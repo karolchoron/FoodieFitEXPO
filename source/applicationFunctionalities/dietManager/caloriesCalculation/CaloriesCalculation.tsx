@@ -7,10 +7,11 @@ import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../../data/FirebaseConfig';
 import { get, ref } from 'firebase/database';
 import { onAuthStateChanged } from 'firebase/auth';
 import styles from './CaloriesStyles';
+import SelectDropdown from 'react-native-select-dropdown';
 
 const CaloriesCalculation = () => {
   const [calories, setCalories] = useContext(CaloriesContext);
-  
+
   // pobranie z bazy danych informacji o zapotrzebowaniu kalorycznym dla zalogowanego uzytkownika
   useEffect(() => {
     onAuthStateChanged(FIREBASE_AUTH, (user) => {
@@ -23,13 +24,16 @@ const CaloriesCalculation = () => {
             const userData = snapshot.val();
             setCalories(userData.caloriesQuantity);
           } else {
-            console.log("Błąd, brak dostępnych danych");
+            // console.log("Błąd, brak dostępnych danych");
+            return null;
           }
         }).catch((error) => {
-          console.error("Błąd pobierania danych: ", error);
+          console.error(error);
+          return null;
         });
       } else {
-        console.log("Błąd, użytkownik nie jest zalogowany.");
+        // console.log("Błąd, użytkownik nie jest zalogowany.");
+        return null;
       }
     });
   }, []);
@@ -37,9 +41,29 @@ const CaloriesCalculation = () => {
   const [textAge, setAgeText] = useState('');
   const [textWeight, setWeightText] = useState('');
   const [textGrowth, setGrowthText] = useState('');
-  const [sexSelectedValue, sexSetSelectedValue] = useState("kobieta");
+  const [sexSelectedValue, sexSetSelectedValue] = useState("Kobieta");
   const [activitySelectedValue, activitySetSelectedValue] = useState("sredniaAktywnosc");
   const [dietPurposeSelectedValue, dietPurposeSetSelectedValue] = useState("utrzymacWage");
+
+  // Wartosci do dropdown list
+  const genders = [
+    { value: 'Kobieta', label: 'Kobieta' },
+    { value: 'Mezczyzna', label: 'Mężczyzna' },
+  ];
+
+  const activities = [
+    { value: 'znikomaAktywnosc', label: 'Znikoma / Brak aktywności' },
+    { value: 'niskaAktywnosc', label: 'Niska aktywność' },
+    { value: 'sredniaAktywnosc', label: 'Średnia aktywność' },
+    { value: 'wysokaAktywnosc', label: 'Wysoka aktywność' },
+    { value: 'bardzoWysokaAktywnosc', label: 'Bardzo wysoka aktywność' },
+  ];
+
+  const dietPurposes = [
+    { value: 'schudnac', label: 'Chcę schudnąć' },
+    { value: 'utrzymacWage', label: 'Chcę utrzymać wagę' },
+    { value: 'przytyc', label: 'Chcę przytyć' },
+  ];
 
   // ukrycie tekstu po kliknieciu w texfield "wiek" "waga" "wzrost" 
   const [isAgeFocused, setAgeIsFocused] = useState(false);
@@ -115,46 +139,58 @@ const CaloriesCalculation = () => {
 
           <View>
             <Text style={styles.contentText}>{'\n'}PŁEĆ</Text>
-            <Picker
-              mode="dropdown"
-              selectedValue={sexSelectedValue}
-              style={styles.stylePicker}
-              onValueChange={(sexValue, sexIndex) => sexSetSelectedValue(sexValue)}>
-              <Picker.Item label="Kobieta" value="kobieta" />
-              <Picker.Item label="Mężczyzna" value="mezczyzna" />
-            </Picker>
+            <SelectDropdown
+              data={genders}
+              onSelect={(selectedItem, index) => {
+                sexSetSelectedValue(selectedItem.value);
+              }}
+              defaultButtonText={"Wybierz płeć"}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem.label;
+              }}
+              rowTextForSelection={(item, index) => {
+                return item.label;
+              }}
+            />
           </View>
 
           <View style={styles.separator}></View>
 
           <View>
-            <Text style={styles.contentText}>{'\n'}AKTYWNOŚĆ  </Text>
-            <Picker
-              mode="dropdown"
-              selectedValue={activitySelectedValue}
-              style={styles.stylePicker}
-              onValueChange={(activityValue, activityIndex) => activitySetSelectedValue(activityValue)}>
-              <Picker.Item label="Znikoma / brak aktywności" value="znikomaAktywnosc" />
-              <Picker.Item label="Niska aktywność" value="niskaAktywnosc" />
-              <Picker.Item label="Średnia aktywność" value="sredniaAktywnosc" />
-              <Picker.Item label="Wysoka aktywność" value="wysokaAktywnosc" />
-              <Picker.Item label="Bardzo wysoka aktywność" value="bardzoWysokaAktywnosc" />
-            </Picker>
+            <Text style={styles.contentText}>{'\n'}AKTYWNOŚĆ</Text>
+            <SelectDropdown
+              data={activities}
+              onSelect={(selectedItem, index) => {
+                activitySetSelectedValue(selectedItem.value);
+              }}
+              defaultButtonText={"Wybierz aktywność"}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem.label;
+              }}
+              rowTextForSelection={(item, index) => {
+                return item.label;
+              }}
+            />
           </View>
 
           <View style={styles.separator}></View>
 
           <View>
             <Text style={styles.contentText}>{'\n'}CEL DIETY</Text>
-            <Picker
-              mode="dropdown"
-              selectedValue={dietPurposeSelectedValue}
-              style={styles.stylePicker}
-              onValueChange={(dietPurposeValue, dietPurposeIndex) => dietPurposeSetSelectedValue(dietPurposeValue)}>
-              <Picker.Item label="Chcę schudnąć" value="schudnac" />
-              <Picker.Item label="Chcę utrzymać wagę" value="utrzymacWage" />
-              <Picker.Item label="Chcę przytyć" value="przytyc" />
-            </Picker>
+            <SelectDropdown
+              data={dietPurposes}
+              onSelect={(selectedItem, index) => {
+                dietPurposeSetSelectedValue(selectedItem.value);
+              }}
+
+              defaultButtonText={"Wybierz cel diety"}
+              buttonTextAfterSelection={(selectedItem, index) => {
+                return selectedItem.label;
+              }}
+              rowTextForSelection={(item, index) => {
+                return item.label;
+              }}
+            />
           </View>
 
           <View>

@@ -13,7 +13,7 @@ const CountCalories = (textAge: string, textWeight: string, textGrowth: string, 
     }
     else {
 
-        if (sexSelectedValue === 'kobieta') {
+        if (sexSelectedValue == 'Kobieta') {
             countedCaloriesDemand = 665.1 + (9.567 * weight) + (1.85 * growth) - (4.68 * age);
         } else {
             countedCaloriesDemand = 66.47 + (13.7 * weight) + (5 * growth) - (6.76 * age);

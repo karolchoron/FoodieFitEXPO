@@ -83,6 +83,19 @@ const styles = StyleSheet.create({
     backgroundColor: 'grey',
   },
 
+  dropdownButtonStyle: {
+    width: '100%',
+    height: 40,
+    backgroundColor: '#f0f0eb',
+    borderRadius: 4,
+    borderWidth: 1,
+    borderColor: '#CCC',
+  },
+  dropdownButtonTextStyle: {
+    color: '#333',
+    textAlign: 'center',
+    fontSize: 16,
+  },
 });
 
 export default styles;

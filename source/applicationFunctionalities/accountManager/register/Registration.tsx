@@ -6,6 +6,7 @@ import AuthorizationContext from '../../../other/AuthorizationContext';
 import { RegisterUser } from './RegisterController';
 import { Picker } from '@react-native-picker/picker';
 import styles from './RegistrationStyles';
+import SelectDropdown from 'react-native-select-dropdown';
 
 type ProfileScreenNavigationProp = StackNavigationProp<RootStackParamList>;
 type Props = {
@@ -38,22 +39,35 @@ const Registration = ({ navigation }: Props) => {
   const userLastNameHandleBlur = () => setUserLastNameIsFocused(false);
   const [dietTypeSelectedValue, setDietTypeSelectedValue] = useState("Klasyczna");
 
+  // Wartosci do dropdown list
+  const dietTypes = [
+    { label: 'Klasyczna', value: 'Klasyczna' },
+    { label: 'Wegetariańska', value: 'Wegetarianska' },
+];
+
   return (
     <KeyboardAvoidingView style={styles.container}>
       <ScrollView showsVerticalScrollIndicator={false}>
 
         <View>
           <Text style={styles.contentText}>{'\n'}Wybierz preferowany typ diety:</Text>
-          <Picker
-            mode="dropdown"
-            selectedValue={dietTypeSelectedValue}
-            style={styles.stylePicker}
-            onValueChange={(dietTypeValue, dietTypeIndex) => setDietTypeSelectedValue(dietTypeValue)}>
-            <Picker.Item label="Klasyczna" value="Klasyczna" />
-            <Picker.Item label="Wegetariańska" value="Wegetarianska" />
-          </Picker>
+          <SelectDropdown
+            data={dietTypes}
+            onSelect={(selectedItem, index) => {
+              setDietTypeSelectedValue(selectedItem.value);
+            }}
+            defaultButtonText={"Wybierz typ diety"}
+            buttonTextAfterSelection={(selectedItem, index) => {
+              return selectedItem.label;
+            }}
+            rowTextForSelection={(item, index) => {
+              return item.label;
+            }}
+          />
         </View>
+
         <View style={styles.separator}></View>
+
         <Text>{'\n'}</Text>
         <View>
           <TextInput
