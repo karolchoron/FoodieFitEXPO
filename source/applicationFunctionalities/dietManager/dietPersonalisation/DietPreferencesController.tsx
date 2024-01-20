@@ -110,6 +110,7 @@ export const DietPreferencesController = () => {
         const currentProductsSnapshot = await get(userRef);
         const currentProducts = currentProductsSnapshot.exists() ? currentProductsSnapshot.val() : {};
 
+        // Usun niechciany produkt z bazy
         let updates: { [key: string]: any } = {};
         Object.keys(currentProducts).forEach(product => {
             if (!products.includes(product)) {
@@ -117,6 +118,7 @@ export const DietPreferencesController = () => {
             }
         });
 
+        // Dodaj niechciany produkt do bazy
         products.forEach(product => {
             if (!currentProducts[product]) {
                 updates[`${product}`] = { name: product }; // Dodaje nowe produkty
