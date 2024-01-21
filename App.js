@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { } from 'react-native';
 import { NavigationContainer } from "@react-navigation/native";
 import { NotLoggedStackNavigation } from './source/navigation/NavigationStackControll';
-import './source/data/FirebaseConfig';
 import 'react-native-gesture-handler';
 import AuthorizationContext from './source/other/AuthorizationContext';
 import CaloriesContext from './source/other/CaloriesContext';

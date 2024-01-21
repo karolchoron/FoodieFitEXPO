@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, KeyboardAvoidingView, FlatList } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
 import '../../../interfaces/ProductInterface';
 import styles from './DietPreferencesStyles';
 import { DietPreferencesController } from './DietPreferencesController';

@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Text, View, TextInput, KeyboardAvoidingView, ScrollView, TouchableOpacity } from 'react-native';
-import { Picker } from '@react-native-picker/picker';
 import CaloriesContext from '../../../other/CaloriesContext';
 import { CountCalories } from './CaloriesController';
 import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../../data/FirebaseConfig';

@@ -4,7 +4,6 @@ import { RootStackParamList } from '../../../other/Types';
 import { StackNavigationProp } from '@react-navigation/stack';
 import AuthorizationContext from '../../../other/AuthorizationContext';
 import { RegisterUser } from './RegisterController';
-import { Picker } from '@react-native-picker/picker';
 import styles from './RegistrationStyles';
 import SelectDropdown from 'react-native-select-dropdown';
 
