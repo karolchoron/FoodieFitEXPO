@@ -1,7 +1,7 @@
-import { UserLogin } from '../source/applicationFunctionalities/accountManager/login/LoginController';
+import { UserLogin } from '../../source/applicationFunctionalities/accountManager/login/LoginController';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { FIREBASE_AUTH } from '../source/data/FirebaseConfig';
-import alert from '../source/other/Alert';
+import { FIREBASE_AUTH } from '../../source/data/FirebaseConfig';
+import alert from '../../source/other/Alert';
 
 
 jest.mock('@react-navigation/stack', () => ({
@@ -12,21 +12,20 @@ jest.mock('firebase/auth', () => ({
     signInWithEmailAndPassword: jest.fn(),
 }));
 
-jest.mock('../source/data/FirebaseConfig', () => ({
+jest.mock('../../source/data/FirebaseConfig', () => ({
     FIREBASE_AUTH: {
         signInWithEmailAndPassword: jest.fn(),
         signOut: jest.fn(),
     },
 }));
 
-jest.mock('../source/other/Alert', () => jest.fn());
+jest.mock('../../source/other/Alert', () => jest.fn());
 
 
 describe('UserLogin', () => {
     const mockSetUserLogged = jest.fn();
     const mockNavigation = { navigate: jest.fn() };
     const userEmail = 'test@example.com';
-    const invaildUserEmail = 'unvaildEmail@';
     const userPassword = 'secretPassword';
 
     beforeEach(() => {
@@ -62,13 +61,4 @@ describe('UserLogin', () => {
 
         expect(alert).toHaveBeenCalledWith('Proszę potwierdzić swój adres e-mail.');
     });
-
-    // it('shows an error alert on login failure', async () => {
-    //     // Symulacja nieudanego logowania
-    //     signInWithEmailAndPassword.mockRejectedValue({ code: 'auth/invalid-email' });
-
-    //     await UserLogin({ navigation: mockNavigation }, invaildUserEmail, userPassword, mockSetUserLogged);
-
-    //     expect(alert).toHaveBeenCalledWith("Nieprawidłowy adres email.");
-    // });
 });

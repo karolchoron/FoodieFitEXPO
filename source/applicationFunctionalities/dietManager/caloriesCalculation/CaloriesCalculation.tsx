@@ -77,6 +77,12 @@ const CaloriesCalculation = () => {
   const growthHandleFocus = () => setGrowthIsFocused(true);
   const growthHandleBlur = () => setGrowthIsFocused(false);
 
+
+  const handlePressCalculateCaloriesButton = () => {
+    const result = CountCalories(textAge, textWeight, textGrowth, sexSelectedValue, activitySelectedValue, dietPurposeSelectedValue);
+    setCalories(result);
+  };
+
   return (
     <>
       <KeyboardAvoidingView style={styles.container}>
@@ -197,7 +203,7 @@ const CaloriesCalculation = () => {
           </View>
 
           <View style={styles.buttonView}>
-            <TouchableOpacity style={styles.button} onPress={() => CountCalories(textAge, textWeight, textGrowth, sexSelectedValue, activitySelectedValue, dietPurposeSelectedValue, setCalories)}>
+            <TouchableOpacity style={styles.button} onPress={() => handlePressCalculateCaloriesButton()}>
               <Text style={styles.buttonText}>
                 Oblicz zapotrzebowanie{'\n'}kaloryczne
               </Text>

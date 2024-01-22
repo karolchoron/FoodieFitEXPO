@@ -1,7 +1,6 @@
 import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { ref, set } from 'firebase/database';
-import alert from '../source/other/Alert';
-import { RegisterUser } from '../source/applicationFunctionalities/accountManager/register/RegisterController';
+import { RegisterUser } from '../../source/applicationFunctionalities/accountManager/register/RegisterController';
 
 
 jest.mock('firebase/auth', () => ({
@@ -14,13 +13,13 @@ jest.mock('firebase/database', () => ({
     set: jest.fn(),
 }));
 
-jest.mock('../source/data/FirebaseConfig', () => ({
+jest.mock('../../source/data/FirebaseConfig', () => ({
     FIREBASE_AUTH: { /* Mocked auth object */ },
     FIREBASE_DATABASE: { /* Mocked database object */ },
 }));
 
 // Mock dla alertów i nawigacji
-jest.mock('../source/other/Alert', () => jest.fn());
+jest.mock('../../source/other/Alert', () => jest.fn());
 jest.mock('@react-navigation/stack', () => ({
     ...jest.requireActual('@react-navigation/stack'),
     useNavigation: () => ({

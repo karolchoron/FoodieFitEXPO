@@ -1,4 +1,4 @@
-import { CountCalories } from '../source/applicationFunctionalities/dietManager/caloriesCalculation/CaloriesController';
+import { CountCalories } from '../../source/applicationFunctionalities/dietManager/caloriesCalculation/CaloriesController';
 
 // TEST AAA
 // Arrange - Przygotwanie
@@ -17,13 +17,12 @@ describe('CountCalories function', () => {
     const dietGoal = 'utrzymacWage';
 
     // ACT
-    const mockSetCalories = jest.fn();
 
-    // Wywołanie funkcji CountCalories z przykładowymi danymi i mockiem setCalories
-    CountCalories(age, weight, height, sex, activityLevel, dietGoal, mockSetCalories);
+    // Wywołanie funkcji CountCalories z przykładowymi danymi
+    const resultCalories = CountCalories(age, weight, height, sex, activityLevel, dietGoal);
 
     // ASSERT
     const expectedCalories = 2564; // Wartosc oczekiwana
-    expect(mockSetCalories).toHaveBeenCalledWith(expectedCalories);
+    expect(resultCalories).toBe(expectedCalories);
   });
 });

@@ -4,7 +4,7 @@ import { get, ref} from 'firebase/database';
 import { onAuthStateChanged } from 'firebase/auth';
 import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../../data/FirebaseConfig';
 import alert from '../../../other/Alert';
-import { Diet7DaysController} from './Diet7DaysController';
+import { pickMealsFor7Days} from './Diet7DaysController';
 import CaloriesContext from '../../../other/CaloriesContext';
 import styles from './Diet7DaysStyles';
 import '../../../interfaces/ProductInterface';
@@ -12,7 +12,6 @@ import '../../../interfaces/DishInterface';
 import '../../../interfaces/DayPlanInterface';
 
 const Diet7Days = () => {
-    const { pickMealsFor7Days } = Diet7DaysController();
     const [weeklyDietPlan, setWeeklyDietPlan] = useState<DayPlan[]>([]);
     const [calories, setCalories] = useContext(CaloriesContext);
     const [caloriesPlanView, setCaloriesPlanView] = useState(false);

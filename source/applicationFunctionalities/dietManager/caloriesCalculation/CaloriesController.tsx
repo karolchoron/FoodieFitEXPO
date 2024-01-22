@@ -2,7 +2,7 @@ import alert from '../../../other/Alert';
 import { FIREBASE_AUTH, FIREBASE_DATABASE } from '../../../data/FirebaseConfig';
 import { get, ref, set } from 'firebase/database';
 
-const CountCalories = (textAge: string, textWeight: string, textGrowth: string, sexSelectedValue: string, activitySelectedValue: string, dietPurposeSelectedValue: string, setCalories: any) => {
+const CountCalories = (textAge: string, textWeight: string, textGrowth: string, sexSelectedValue: string, activitySelectedValue: string, dietPurposeSelectedValue: string) => {
     let countedCaloriesDemand = 0;
     const age = parseFloat(textAge);
     const weight = parseFloat(textWeight);
@@ -64,7 +64,6 @@ const CountCalories = (textAge: string, textWeight: string, textGrowth: string, 
         }
 
         let finalCalories = parseFloat(countedCaloriesDemand.toFixed(0));
-        setCalories(finalCalories);
 
         const user = FIREBASE_AUTH.currentUser;
 
@@ -98,6 +97,8 @@ const CountCalories = (textAge: string, textWeight: string, textGrowth: string, 
         } else {
             alert('Nie zalogowano użytkownika.');
         }
+
+        return finalCalories;
     }
 };
 
