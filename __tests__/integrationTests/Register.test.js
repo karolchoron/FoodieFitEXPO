@@ -2,7 +2,6 @@ import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/
 import { ref, set } from 'firebase/database';
 import { RegisterUser } from '../../source/applicationFunctionalities/accountManager/register/RegisterController';
 
-
 jest.mock('firebase/auth', () => ({
     createUserWithEmailAndPassword: jest.fn(),
     sendEmailVerification: jest.fn(),
@@ -14,12 +13,14 @@ jest.mock('firebase/database', () => ({
 }));
 
 jest.mock('../../source/data/FirebaseConfig', () => ({
-    FIREBASE_AUTH: { /* Mocked auth object */ },
-    FIREBASE_DATABASE: { /* Mocked database object */ },
+    FIREBASE_AUTH: {},
+    FIREBASE_DATABASE: {},
 }));
 
-// Mock dla alertów i nawigacji
+// Mock dla alertow
 jest.mock('../../source/other/Alert', () => jest.fn());
+
+// Mock nawigacji
 jest.mock('@react-navigation/stack', () => ({
     ...jest.requireActual('@react-navigation/stack'),
     useNavigation: () => ({
@@ -36,12 +37,12 @@ describe('RegisterUser', () => {
     const userLastName = 'User';
     const dietTypeSelectedValue = 'Klasyczna';
 
+    // czyszczenie mockow przed kazdym testem
     beforeEach(() => {
-        jest.clearAllMocks(); // Czyści mocki przed każdym testem
+        jest.clearAllMocks();
     });
 
     it('attempts to register a user with provided credentials', async () => {
-        // Mock funkcji, które zwracają promise
         createUserWithEmailAndPassword.mockImplementation(() => Promise.resolve({
             user: {
                 uid: '123',

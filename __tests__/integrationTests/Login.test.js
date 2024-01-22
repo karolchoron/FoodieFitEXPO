@@ -3,9 +3,8 @@ import { signInWithEmailAndPassword } from 'firebase/auth';
 import { FIREBASE_AUTH } from '../../source/data/FirebaseConfig';
 import alert from '../../source/other/Alert';
 
-
+// Mock nawigacji
 jest.mock('@react-navigation/stack', () => ({
-    // Mock dla useNavigation, jeśli jest używany gdzieś indziej w komponencie
 }));
 
 jest.mock('firebase/auth', () => ({
@@ -21,19 +20,19 @@ jest.mock('../../source/data/FirebaseConfig', () => ({
 
 jest.mock('../../source/other/Alert', () => jest.fn());
 
-
 describe('UserLogin', () => {
     const mockSetUserLogged = jest.fn();
     const mockNavigation = { navigate: jest.fn() };
     const userEmail = 'test@example.com';
     const userPassword = 'secretPassword';
 
+    // Resetuje mocki przed kazdym testem
     beforeEach(() => {
-        jest.clearAllMocks(); // Resetuje mocki przed każdym testem
+        jest.clearAllMocks();
     });
 
     it('logs the user in and navigates on successful login with email verified', async () => {
-        // Symulacja udanego logowania z potwierdzonym emailem
+        // Symulacja udanego logowania z zweryfikowanym emailem
         signInWithEmailAndPassword.mockResolvedValue({
             user: {
                 uid: '123',
@@ -49,7 +48,7 @@ describe('UserLogin', () => {
     });
 
     it('shows an alert on login attempt with unverified email', async () => {
-        // Symulacja logowania z niepotwierdzonym emailem
+        // Symulacja logowania z nieweryfikowanym emailem
         signInWithEmailAndPassword.mockResolvedValue({
             user: {
                 uid: '123',

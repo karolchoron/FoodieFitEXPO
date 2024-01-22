@@ -1,7 +1,8 @@
 import { pickRandomMeal7Days } from '../../source/applicationFunctionalities/mealPlanManager/sevenDaysMeal/Diet7DaysController';
 
 describe('pickRandomMeal7Days', () => {
-    // Przygotowanie przykładowych danych posiłków
+
+    // Przygotowanie przykladowych danych posilkow
     const meals = [
         { id: '1', name: 'Posiłek 1', type: 'breakfast' },
         { id: '2', name: 'Posiłek 2', type: 'dinner' },
@@ -22,14 +23,15 @@ describe('pickRandomMeal7Days', () => {
     });
 
     it('returns a random meal from the provided meal options', () => {
-        // Symulacja wywołania funkcji wielokrotnie, aby sprawdzić, czy możemy otrzymać różne posiłki
+        // Symulacja wywolania funkcji wielokrotnie, aby sprawdzic czy losuje rozne posilki
         const results = new Set();
-        const iterations = 50; // Wielokrotne wywołania, aby zwiększyć szansę na różnorodność
+
+        const iterations = 50;
         for (let i = 0; i < iterations; i++) {
             const result = pickRandomMeal7Days(meals, 'breakfast');
             results.add(result.id);
         }
-        // Sprawdzenie, czy funkcja zwróciła więcej niż jeden unikalny posiłek
+        // Sprawdzenie czy funkcja zwrocila więcej niż jeden unikalny posilek
         expect(results.size).toBeGreaterThan(1);
     });
 });
