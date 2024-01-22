@@ -24,7 +24,6 @@ jest.mock('firebase/database', () => ({
 
 describe('CountCalories Integration Test', () => {
     it('should update the user\'s calorie count correctly and return the calculated calories', async () => {
-        
         // GIVEN
         const age = "24";
         const weight = "75";

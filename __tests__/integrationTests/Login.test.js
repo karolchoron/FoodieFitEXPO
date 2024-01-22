@@ -56,11 +56,7 @@ describe('UserLogin', () => {
         // GIVEN
         // Symulacja logowania z nieweryfikowanym emailem
         signInWithEmailAndPassword.mockResolvedValue({
-            user: {
-                uid: '123',
-                emailVerified: false,
-            },
-        });
+            user: {uid: '123',emailVerified: false,},});
 
         // WHEN
         await UserLogin({ navigation: mockNavigation }, userEmail, userPassword, mockSetUserLogged);
