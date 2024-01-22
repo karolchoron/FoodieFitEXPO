@@ -74,8 +74,12 @@ jest.mock('firebase/database', () => ({
 describe('Diet7DaysController', () => {
     it('generates a 7-day meal plan based on user preferences', async () => {
 
+        //GIVEN - w tym przypadku brak given -  mockupy są given
+
+        // WHEN
         const mealPlan = await pickMealsFor7Days();
 
+        // THEN
         expect(mealPlan).toHaveLength(7); // Sprawdza, czy plan posiłków zawiera wygenerowane posilki na 7 dni
     });
 });

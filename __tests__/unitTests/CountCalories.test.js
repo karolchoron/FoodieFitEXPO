@@ -3,18 +3,19 @@ import { CountCalories } from '../../source/applicationFunctionalities/dietManag
 describe('CountCalories function', () => {
   it('should correctly calculate the caloric needs', () => {
 
+    // GIVEN
     const age = 24;
     const weight = 75;
     const height = 180;
     const sex = 'Mezczyzna';
     const activityLevel = 'sredniaAktywnosc';
     const dietGoal = 'utrzymacWage';
+    const expectedCalories = 2564;
 
-    // Wywołanie funkcji CountCalories z przykladowymi danymi
+    // WHEN
     const resultCalories = CountCalories(age, weight, height, sex, activityLevel, dietGoal);
 
-    // Wartosc oczekiwana
-    const expectedCalories = 2564;
+    // THEN
     expect(resultCalories).toBe(expectedCalories);
   });
 });

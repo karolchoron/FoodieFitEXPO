@@ -24,7 +24,8 @@ jest.mock('firebase/database', () => ({
 
 describe('CountCalories Integration Test', () => {
     it('should update the user\'s calorie count correctly and return the calculated calories', async () => {
-
+        
+        // GIVEN
         const age = "24";
         const weight = "75";
         const height = "180";
@@ -35,8 +36,10 @@ describe('CountCalories Integration Test', () => {
         // Symulacja spodziewanej wartości kalorii
         const expectedCalories = 2564;
 
+        // WHEN
         await CountCalories(age, weight, height, sex, activityLevel, dietGoal);
 
+        //THEN
         // Sprawdzenie, czy dane zostaly poprawnie zaktualizowane w bazie danych Firebase
         expect(ref).toHaveBeenCalledWith(expect.anything(), `users/testUserId`);
         expect(set).toHaveBeenCalledWith(undefined, {
