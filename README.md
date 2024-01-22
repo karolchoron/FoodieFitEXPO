@@ -20,7 +20,7 @@ Aby uruchomić Metro Bundler, uruchom następującą komendę z _katalogu głów
 npx expo start
 ```
 
-## Step 2: Start your Application
+## Step 2: Uruchom aplikację
 Po uruchomieniu serwera Metro w konsoli pojawi się menu. Wystarczy kliknąć odpowiednią literę na klawiaturze, aby uruchomić aplikację dla odpowiedniej platformy:
 
 1. a - Android
@@ -34,6 +34,8 @@ npx expo start --android
 npx expo start --ios
 npx expo start --web
 ```
+
+Aby uruchomić aplikację na fizycznym urządzeniu należy zainstalować aplikację Expo Go a następnie zeskanować telefonem kod QR z menu Metro
 
 ### To wszystko! Miłego korzystania z aplikacji FoodieFit!
 
@@ -76,6 +78,7 @@ npx expo start --ios
 npx expo start --web
 ```
 
-### That's it! Have fun using the FoodieFit app!
+To run the app on a physical device, install the Expo Go app and then scan the QR code from the Metro menu with your phone
 
+### That's it! Have fun using the FoodieFit app!
 
