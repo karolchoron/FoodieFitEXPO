@@ -1,6 +1,7 @@
 # Foodie Fit - aplikacja wieloplatformowa w React Native Expo
 
 > English version below
+> 
 >**Uwaga**: Upewnij się, że prawidłowo skonfigurowałeś środowisko [React Native Expo - Environment Setup](https://reactnative.dev/docs/environment-setup).
 
 ## Krok 0: Zainstaluj pakiety NPM
