@@ -50,7 +50,7 @@ npx expo start --web
 
 ---
 
-# 🌍 Foodie Fit - React Native Expo cross-platform App
+# 📱 Foodie Fit - React Native Expo cross-platform App
 
 > **⚠️ Note**: Make sure you have completed the [React Native Expo - Environment Setup](https://reactnative.dev/docs/environment-setup).
 
