@@ -12,6 +12,13 @@ Aby zainstalować pakiety npm, musisz uruchomić nastepującą komendę:
    npm install
    ```
 
+## Krok 1: Utwórz projekt bazy danych Firebase
+
+a. Utwórz projekt  Firebase Realtime Database oraz Firebase Authentication. 
+
+b. Pamiętaj również o uzupełnieniu pliku source/data/FirebaseConfig.js
+
+
 ## Krok 2: Uruchom serwer Metro Bundler
 
 Aby uruchomić Metro Bundler, uruchom następującą komendę z _katalogu głównego_ projektu:
@@ -21,7 +28,7 @@ Aby uruchomić Metro Bundler, uruchom następującą komendę z _katalogu głów
 npx expo start
 ```
 
-## Step 2: Uruchom aplikację
+## Krok 3: Uruchom aplikację
 Po uruchomieniu serwera Metro w konsoli pojawi się menu. Wystarczy kliknąć odpowiednią literę na klawiaturze, aby uruchomić aplikację dla odpowiedniej platformy:
 
 1. a - Android
@@ -55,7 +62,14 @@ To install npm packages, you run following command:
    npm install
    ```
 
-## Step 1: Start the Metro Server
+## Step 1: Create a Firebase database project
+
+a. Create a Firebase Realtime Database and Firebase Authentication project. 
+
+b. Also remember to complete the source/data/FirebaseConfig.js file
+
+
+## Step 2: Start the Metro Server
 
 To start Metro Bundler, run the following command from the _root_ of your React Native project:
 
@@ -64,7 +78,7 @@ To start Metro Bundler, run the following command from the _root_ of your React 
 npx expo start
 ```
 
-## Step 2: Start your Application
+## Step 3: Start your Application
 
 When the Metro Server is started, a menu will appear in the console. Just click the appropriate letter on the keyboard and the application for the corresponding platform will be launched:
 1. a - Android
